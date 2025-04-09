@@ -1,0 +1,90 @@
+
+
+***********************************************************************
+Fatal NI connect error 12650, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=cmsonr-adg1-s.cern.ch)(PORT=10121))(ENABLE=BROKEN)(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=cms_orcon_adg.cern.ch)(CID=(PROGRAM=python)(HOST=lxplus995.cern.ch)(USER=chatterj))))
+
+  VERSION INFORMATION:
+	TNS for Linux: Version 11.2.0.4.0 - Production
+	TCP/IP NT Protocol Adapter for Linux: Version 11.2.0.4.0 - Production
+  Time: 10-FEB-2025 17:59:09
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12650
+    TNS-12650: Message 12650 not found; No message file for product=network, facility=TNS
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12650, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=cmsonr-adg1-s.cern.ch)(PORT=10121))(ENABLE=BROKEN)(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=cms_orcon_adg.cern.ch)(CID=(PROGRAM=python)(HOST=lxplus9100.cern.ch)(USER=chatterj))))
+
+  VERSION INFORMATION:
+	TNS for Linux: Version 11.2.0.4.0 - Production
+	TCP/IP NT Protocol Adapter for Linux: Version 11.2.0.4.0 - Production
+  Time: 10-FEB-2025 18:15:21
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12650
+    TNS-12650: Message 12650 not found; No message file for product=network, facility=TNS
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12650, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=cmsonr-adg1-s.cern.ch)(PORT=10121))(ENABLE=BROKEN)(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=cms_orcon_adg.cern.ch)(CID=(PROGRAM=python)(HOST=lxplus9100.cern.ch)(USER=chatterj))))
+
+  VERSION INFORMATION:
+	TNS for Linux: Version 11.2.0.4.0 - Production
+	TCP/IP NT Protocol Adapter for Linux: Version 11.2.0.4.0 - Production
+  Time: 10-FEB-2025 18:16:27
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12650
+    TNS-12650: Message 12650 not found; No message file for product=network, facility=TNS
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12650, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=cmsonr-adg1-s.cern.ch)(PORT=10121))(ENABLE=BROKEN)(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=cms_orcon_adg.cern.ch)(CID=(PROGRAM=python)(HOST=lxplus9100.cern.ch)(USER=chatterj))))
+
+  VERSION INFORMATION:
+	TNS for Linux: Version 11.2.0.4.0 - Production
+	TCP/IP NT Protocol Adapter for Linux: Version 11.2.0.4.0 - Production
+  Time: 10-FEB-2025 18:16:45
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12650
+    TNS-12650: Message 12650 not found; No message file for product=network, facility=TNS
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12650, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=cmsonr-adg1-s.cern.ch)(PORT=10121))(ENABLE=BROKEN)(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=cms_orcon_adg.cern.ch)(CID=(PROGRAM=python)(HOST=lxplus9100.cern.ch)(USER=chatterj))))
+
+  VERSION INFORMATION:
+	TNS for Linux: Version 11.2.0.4.0 - Production
+	TCP/IP NT Protocol Adapter for Linux: Version 11.2.0.4.0 - Production
+  Time: 10-FEB-2025 18:17:18
+  Tracing not turned on.
+  Tns error struct:
+    ns main err code: 12650
+    TNS-12650: Message 12650 not found; No message file for product=network, facility=TNS
+    ns secondary err code: 0
+    nt main err code: 0
+    nt secondary err code: 0
+    nt OS err code: 0

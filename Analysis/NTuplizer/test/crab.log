@@ -1,0 +1,378 @@
+DEBUG 2024-12-29 14:29:05.812 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2024-12-29 14:29:05.813 UTC: 	 Running on: Linux lxplus986.cern.ch 5.14.0-503.15.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 14 15:45:31 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2024-12-29 14:29:05.813 UTC: 	 Not using Singularity
+DEBUG 2024-12-29 14:29:05.813 UTC: 	 Operating System: Red Hat Enterprise Linux 9.5 (Plow)
+DEBUG 2024-12-29 14:29:05.813 UTC: 	 Executing command: 'status'
+DEBUG 2024-12-29 14:29:05.818 UTC: 	 Found CRAB cache file /afs/cern.ch/user/c/chatterj/.crab3
+ERROR 2024-12-29 14:29:05.819 UTC: 	 Error: crab_TTto4Q_TuneCP5_13p6TeV_powheg-pythia8/crab_crab_TTto4Q_TuneCP5_13p6TeV_powheg-pythia8/ is not a valid CRAB project directory.
+ERROR 2024-12-29 14:29:05.819 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])  # the crab command to be executed
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/status.py", line 48, in __init__
+    SubCommand.__init__(self, logger, cmdargs)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 281, in __init__
+    SubCommand.validateOptions(self)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 691, in validateOptions
+    raise ConfigurationException(msg)
+CRABClient.ClientExceptions.ConfigurationException: [91mError[0m: crab_TTto4Q_TuneCP5_13p6TeV_powheg-pythia8/crab_crab_TTto4Q_TuneCP5_13p6TeV_powheg-pythia8/ is not a valid CRAB project directory.
+INFO 2024-12-29 14:29:05.821 UTC: 	 Log file is /afs/cern.ch/work/c/chatterj/private/XToYH/Run3/CMSSW_14_2_1/src/Analysis/NTuplizer/test/crab.log
+DEBUG 2024-12-29 14:29:07.201 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2024-12-29 14:29:07.202 UTC: 	 Running on: Linux lxplus986.cern.ch 5.14.0-503.15.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 14 15:45:31 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2024-12-29 14:29:07.202 UTC: 	 Not using Singularity
+DEBUG 2024-12-29 14:29:07.202 UTC: 	 Operating System: Red Hat Enterprise Linux 9.5 (Plow)
+DEBUG 2024-12-29 14:29:07.202 UTC: 	 Executing command: 'status'
+DEBUG 2024-12-29 14:29:07.202 UTC: 	 Found CRAB cache file /afs/cern.ch/user/c/chatterj/.crab3
+ERROR 2024-12-29 14:29:07.202 UTC: 	 Error: crab_TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/crab_crab_TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/ is not a valid CRAB project directory.
+ERROR 2024-12-29 14:29:07.202 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])  # the crab command to be executed
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/status.py", line 48, in __init__
+    SubCommand.__init__(self, logger, cmdargs)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 281, in __init__
+    SubCommand.validateOptions(self)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 691, in validateOptions
+    raise ConfigurationException(msg)
+CRABClient.ClientExceptions.ConfigurationException: [91mError[0m: crab_TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/crab_crab_TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/ is not a valid CRAB project directory.
+INFO 2024-12-29 14:29:07.204 UTC: 	 Log file is /afs/cern.ch/work/c/chatterj/private/XToYH/Run3/CMSSW_14_2_1/src/Analysis/NTuplizer/test/crab.log
+DEBUG 2024-12-29 14:29:08.627 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2024-12-29 14:29:08.627 UTC: 	 Running on: Linux lxplus986.cern.ch 5.14.0-503.15.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 14 15:45:31 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2024-12-29 14:29:08.627 UTC: 	 Not using Singularity
+DEBUG 2024-12-29 14:29:08.627 UTC: 	 Operating System: Red Hat Enterprise Linux 9.5 (Plow)
+DEBUG 2024-12-29 14:29:08.627 UTC: 	 Executing command: 'status'
+DEBUG 2024-12-29 14:29:08.628 UTC: 	 Found CRAB cache file /afs/cern.ch/user/c/chatterj/.crab3
+ERROR 2024-12-29 14:29:08.628 UTC: 	 Error: crab_TTto2L2Nu_TuneCP5_13p6TeV_powheg-pythia8/crab_crab_TTto2L2Nu_TuneCP5_13p6TeV_powheg-pythia8/ is not a valid CRAB project directory.
+ERROR 2024-12-29 14:29:08.628 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])  # the crab command to be executed
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/status.py", line 48, in __init__
+    SubCommand.__init__(self, logger, cmdargs)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 281, in __init__
+    SubCommand.validateOptions(self)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 691, in validateOptions
+    raise ConfigurationException(msg)
+CRABClient.ClientExceptions.ConfigurationException: [91mError[0m: crab_TTto2L2Nu_TuneCP5_13p6TeV_powheg-pythia8/crab_crab_TTto2L2Nu_TuneCP5_13p6TeV_powheg-pythia8/ is not a valid CRAB project directory.
+INFO 2024-12-29 14:29:08.630 UTC: 	 Log file is /afs/cern.ch/work/c/chatterj/private/XToYH/Run3/CMSSW_14_2_1/src/Analysis/NTuplizer/test/crab.log
+DEBUG 2024-12-29 14:29:10.038 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2024-12-29 14:29:10.038 UTC: 	 Running on: Linux lxplus986.cern.ch 5.14.0-503.15.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 14 15:45:31 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2024-12-29 14:29:10.039 UTC: 	 Not using Singularity
+DEBUG 2024-12-29 14:29:10.039 UTC: 	 Operating System: Red Hat Enterprise Linux 9.5 (Plow)
+DEBUG 2024-12-29 14:29:10.039 UTC: 	 Executing command: 'status'
+DEBUG 2024-12-29 14:29:10.039 UTC: 	 Found CRAB cache file /afs/cern.ch/user/c/chatterj/.crab3
+ERROR 2024-12-29 14:29:10.039 UTC: 	 Error: crab_TbarWplusto4Q_TuneCP5_13p6TeV_powheg-pythia8/crab_crab_TbarWplusto4Q_TuneCP5_13p6TeV_powheg-pythia8/ is not a valid CRAB project directory.
+ERROR 2024-12-29 14:29:10.039 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])  # the crab command to be executed
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/status.py", line 48, in __init__
+    SubCommand.__init__(self, logger, cmdargs)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 281, in __init__
+    SubCommand.validateOptions(self)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 691, in validateOptions
+    raise ConfigurationException(msg)
+CRABClient.ClientExceptions.ConfigurationException: [91mError[0m: crab_TbarWplusto4Q_TuneCP5_13p6TeV_powheg-pythia8/crab_crab_TbarWplusto4Q_TuneCP5_13p6TeV_powheg-pythia8/ is not a valid CRAB project directory.
+INFO 2024-12-29 14:29:10.040 UTC: 	 Log file is /afs/cern.ch/work/c/chatterj/private/XToYH/Run3/CMSSW_14_2_1/src/Analysis/NTuplizer/test/crab.log
+DEBUG 2024-12-29 14:29:11.485 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2024-12-29 14:29:11.485 UTC: 	 Running on: Linux lxplus986.cern.ch 5.14.0-503.15.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 14 15:45:31 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2024-12-29 14:29:11.485 UTC: 	 Not using Singularity
+DEBUG 2024-12-29 14:29:11.485 UTC: 	 Operating System: Red Hat Enterprise Linux 9.5 (Plow)
+DEBUG 2024-12-29 14:29:11.485 UTC: 	 Executing command: 'status'
+DEBUG 2024-12-29 14:29:11.486 UTC: 	 Found CRAB cache file /afs/cern.ch/user/c/chatterj/.crab3
+ERROR 2024-12-29 14:29:11.486 UTC: 	 Error: crab_TbarWplustoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/crab_crab_TbarWplustoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/ is not a valid CRAB project directory.
+ERROR 2024-12-29 14:29:11.486 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])  # the crab command to be executed
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/status.py", line 48, in __init__
+    SubCommand.__init__(self, logger, cmdargs)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 281, in __init__
+    SubCommand.validateOptions(self)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 691, in validateOptions
+    raise ConfigurationException(msg)
+CRABClient.ClientExceptions.ConfigurationException: [91mError[0m: crab_TbarWplustoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/crab_crab_TbarWplustoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/ is not a valid CRAB project directory.
+INFO 2024-12-29 14:29:11.487 UTC: 	 Log file is /afs/cern.ch/work/c/chatterj/private/XToYH/Run3/CMSSW_14_2_1/src/Analysis/NTuplizer/test/crab.log
+DEBUG 2024-12-31 19:55:47.824 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2024-12-31 19:55:47.824 UTC: 	 Running on: Linux lxplus977.cern.ch 5.14.0-427.40.1.el9_4.x86_64 #1 SMP PREEMPT_DYNAMIC Fri Oct 4 15:22:45 EDT 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2024-12-31 19:55:47.824 UTC: 	 Not using Singularity
+DEBUG 2024-12-31 19:55:47.825 UTC: 	 Operating System: Red Hat Enterprise Linux 9.5 (Plow)
+DEBUG 2024-12-31 19:55:47.825 UTC: 	 Executing command: 'submit'
+DEBUG 2024-12-31 19:55:47.825 UTC: 	 Found CRAB cache file /afs/cern.ch/user/c/chatterj/.crab3
+INFO 2024-12-31 19:55:47.825 UTC: 	 Will use CRAB configuration file crabfile_2022EE_QCD-4Jets_HT-2000_TuneCP5_13p6TeV_madgraphMLM-pythia8.py
+DEBUG 2024-12-31 19:55:47.825 UTC: 	 Loading CRAB configuration file.
+DEBUG 2024-12-31 19:55:47.893 UTC: 	 Will use CRAB plugin ANALYSIS (i.e. will run an analysis job type).
+ERROR 2024-12-31 19:55:47.894 UTC: 	 Working area '/afs/cern.ch/work/c/chatterj/private/XToYH/Run3/CMSSW_14_2_1/src/Analysis/NTuplizer/test/crab_2022EE_MC_Bkg/crab_crab_QCD-4Jets_HT-2000_TuneCP5_13p6TeV_madgraphMLM-pythia8' already exists 
+Please change the requestName in the config file
+ERROR 2024-12-31 19:55:47.894 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])  # the crab command to be executed
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/submit.py", line 37, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 328, in __init__
+    self.requestarea, self.requestname, self.logfile = createWorkArea(
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/ClientUtilities.py", line 392, in createWorkArea
+    raise ConfigException("Working area '%s' already exists \nPlease change the requestName in the config file" % fullpath)
+CRABClient.ClientExceptions.ConfigException: Working area '/afs/cern.ch/work/c/chatterj/private/XToYH/Run3/CMSSW_14_2_1/src/Analysis/NTuplizer/test/crab_2022EE_MC_Bkg/crab_crab_QCD-4Jets_HT-2000_TuneCP5_13p6TeV_madgraphMLM-pythia8' already exists 
+Please change the requestName in the config file
+INFO 2024-12-31 19:55:47.909 UTC: 	 Log file is /afs/cern.ch/work/c/chatterj/private/XToYH/Run3/CMSSW_14_2_1/src/Analysis/NTuplizer/test/crab.log
+DEBUG 2025-01-01 12:28:05.542 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2025-01-01 12:28:05.543 UTC: 	 Running on: Linux lxplus962.cern.ch 5.14.0-503.14.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 7 15:41:49 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-01-01 12:28:05.543 UTC: 	 Not using Singularity
+DEBUG 2025-01-01 12:28:05.543 UTC: 	 Operating System: Red Hat Enterprise Linux 9.5 (Plow)
+DEBUG 2025-01-01 12:28:05.543 UTC: 	 Executing command: 'submit'
+DEBUG 2025-01-01 12:28:05.543 UTC: 	 Found CRAB cache file /afs/cern.ch/user/c/chatterj/.crab3
+INFO 2025-01-01 12:28:05.543 UTC: 	 Will use CRAB configuration file crabfile_JetMET_Run2022D.py
+DEBUG 2025-01-01 12:28:05.544 UTC: 	 Loading CRAB configuration file.
+DEBUG 2025-01-01 12:28:05.548 UTC: 	 Will use CRAB plugin ANALYSIS (i.e. will run an analysis job type).
+ERROR 2025-01-01 12:28:05.548 UTC: 	 Working area '/afs/cern.ch/work/c/chatterj/private/XToYH/Run3/CMSSW_14_2_1/src/Analysis/NTuplizer/test/crab_2022_DATA_D/crab_crab_JetMET_Run2022D' already exists 
+Please change the requestName in the config file
+ERROR 2025-01-01 12:28:05.549 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])  # the crab command to be executed
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/submit.py", line 37, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 328, in __init__
+    self.requestarea, self.requestname, self.logfile = createWorkArea(
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/ClientUtilities.py", line 392, in createWorkArea
+    raise ConfigException("Working area '%s' already exists \nPlease change the requestName in the config file" % fullpath)
+CRABClient.ClientExceptions.ConfigException: Working area '/afs/cern.ch/work/c/chatterj/private/XToYH/Run3/CMSSW_14_2_1/src/Analysis/NTuplizer/test/crab_2022_DATA_D/crab_crab_JetMET_Run2022D' already exists 
+Please change the requestName in the config file
+INFO 2025-01-01 12:28:05.561 UTC: 	 Log file is /afs/cern.ch/work/c/chatterj/private/XToYH/Run3/CMSSW_14_2_1/src/Analysis/NTuplizer/test/crab.log
+DEBUG 2025-01-07 16:56:21.476 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2025-01-07 16:56:21.476 UTC: 	 Running on: Linux lxplus9100.cern.ch 5.14.0-503.16.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 21 07:26:21 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-01-07 16:56:21.476 UTC: 	 Not using Singularity
+DEBUG 2025-01-07 16:56:21.476 UTC: 	 Operating System: Red Hat Enterprise Linux 9.5 (Plow)
+DEBUG 2025-01-07 16:56:21.476 UTC: 	 Executing command: 'submit'
+DEBUG 2025-01-07 16:56:21.476 UTC: 	 Found CRAB cache file /afs/cern.ch/user/c/chatterj/.crab3
+INFO 2025-01-07 16:56:21.477 UTC: 	 Will use CRAB configuration file crabfile_2023_JetMET1_Run2023C_Run2023C_22Sep2023_v1.py
+DEBUG 2025-01-07 16:56:21.477 UTC: 	 Loading CRAB configuration file.
+DEBUG 2025-01-07 16:56:21.488 UTC: 	 Will use CRAB plugin ANALYSIS (i.e. will run an analysis job type).
+ERROR 2025-01-07 16:56:21.488 UTC: 	 Working area '/afs/cern.ch/work/c/chatterj/private/XToYH/Run3/CMSSW_14_2_1/src/Analysis/NTuplizer/test/crab_2023_DATA_Cv1v2v3/crab_crab_JetMET1_Run2023C_Run2023C_22Sep2023_v1' already exists 
+Please change the requestName in the config file
+ERROR 2025-01-07 16:56:21.488 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])  # the crab command to be executed
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/submit.py", line 37, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 328, in __init__
+    self.requestarea, self.requestname, self.logfile = createWorkArea(
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/ClientUtilities.py", line 392, in createWorkArea
+    raise ConfigException("Working area '%s' already exists \nPlease change the requestName in the config file" % fullpath)
+CRABClient.ClientExceptions.ConfigException: Working area '/afs/cern.ch/work/c/chatterj/private/XToYH/Run3/CMSSW_14_2_1/src/Analysis/NTuplizer/test/crab_2023_DATA_Cv1v2v3/crab_crab_JetMET1_Run2023C_Run2023C_22Sep2023_v1' already exists 
+Please change the requestName in the config file
+INFO 2025-01-07 16:56:21.501 UTC: 	 Log file is /afs/cern.ch/work/c/chatterj/private/XToYH/Run3/CMSSW_14_2_1/src/Analysis/NTuplizer/test/crab.log
+DEBUG 2025-01-08 08:47:23.399 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2025-01-08 08:47:23.399 UTC: 	 Running on: Linux lxplus938.cern.ch 5.14.0-503.15.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 14 15:45:31 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-01-08 08:47:23.399 UTC: 	 Not using Singularity
+DEBUG 2025-01-08 08:47:23.399 UTC: 	 Operating System: Red Hat Enterprise Linux 9.5 (Plow)
+DEBUG 2025-01-08 08:47:23.399 UTC: 	 Executing command: 'status'
+DEBUG 2025-01-08 08:47:23.399 UTC: 	 Found CRAB cache file /afs/cern.ch/user/c/chatterj/.crab3
+ERROR 2025-01-08 08:47:23.402 UTC: 	 Error: crab_2023_DATA_Cv4/crab_crab_JetMET0_Run2023C_Run2023C_22Sep2023_v4/ is not a valid CRAB project directory.
+ERROR 2025-01-08 08:47:23.402 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])  # the crab command to be executed
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/status.py", line 48, in __init__
+    SubCommand.__init__(self, logger, cmdargs)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 281, in __init__
+    SubCommand.validateOptions(self)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 691, in validateOptions
+    raise ConfigurationException(msg)
+CRABClient.ClientExceptions.ConfigurationException: [91mError[0m: crab_2023_DATA_Cv4/crab_crab_JetMET0_Run2023C_Run2023C_22Sep2023_v4/ is not a valid CRAB project directory.
+INFO 2025-01-08 08:47:23.514 UTC: 	 Log file is /afs/cern.ch/work/c/chatterj/private/XToYH/Run3/CMSSW_14_2_1/src/Analysis/NTuplizer/test/crab.log
+DEBUG 2025-01-08 08:47:24.948 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2025-01-08 08:47:24.948 UTC: 	 Running on: Linux lxplus938.cern.ch 5.14.0-503.15.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 14 15:45:31 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-01-08 08:47:24.948 UTC: 	 Not using Singularity
+DEBUG 2025-01-08 08:47:24.948 UTC: 	 Operating System: Red Hat Enterprise Linux 9.5 (Plow)
+DEBUG 2025-01-08 08:47:24.948 UTC: 	 Executing command: 'status'
+DEBUG 2025-01-08 08:47:24.948 UTC: 	 Found CRAB cache file /afs/cern.ch/user/c/chatterj/.crab3
+ERROR 2025-01-08 08:47:24.949 UTC: 	 Error: crab_2023_DATA_Cv4/crab_crab_JetMET1_Run2023C_Run2023C_22Sep2023_v4/ is not a valid CRAB project directory.
+ERROR 2025-01-08 08:47:24.949 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])  # the crab command to be executed
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/status.py", line 48, in __init__
+    SubCommand.__init__(self, logger, cmdargs)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 281, in __init__
+    SubCommand.validateOptions(self)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 691, in validateOptions
+    raise ConfigurationException(msg)
+CRABClient.ClientExceptions.ConfigurationException: [91mError[0m: crab_2023_DATA_Cv4/crab_crab_JetMET1_Run2023C_Run2023C_22Sep2023_v4/ is not a valid CRAB project directory.
+INFO 2025-01-08 08:47:24.950 UTC: 	 Log file is /afs/cern.ch/work/c/chatterj/private/XToYH/Run3/CMSSW_14_2_1/src/Analysis/NTuplizer/test/crab.log
+DEBUG 2025-01-08 08:47:26.354 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2025-01-08 08:47:26.354 UTC: 	 Running on: Linux lxplus938.cern.ch 5.14.0-503.15.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 14 15:45:31 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-01-08 08:47:26.354 UTC: 	 Not using Singularity
+DEBUG 2025-01-08 08:47:26.354 UTC: 	 Operating System: Red Hat Enterprise Linux 9.5 (Plow)
+DEBUG 2025-01-08 08:47:26.354 UTC: 	 Executing command: 'status'
+DEBUG 2025-01-08 08:47:26.354 UTC: 	 Found CRAB cache file /afs/cern.ch/user/c/chatterj/.crab3
+ERROR 2025-01-08 08:47:26.355 UTC: 	 Error: crab_2023_DATA_Cv4/crab_crab_ParkingHH_Run2023C_Run2023C_22Sep2023_v4/ is not a valid CRAB project directory.
+ERROR 2025-01-08 08:47:26.355 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])  # the crab command to be executed
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/status.py", line 48, in __init__
+    SubCommand.__init__(self, logger, cmdargs)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 281, in __init__
+    SubCommand.validateOptions(self)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 691, in validateOptions
+    raise ConfigurationException(msg)
+CRABClient.ClientExceptions.ConfigurationException: [91mError[0m: crab_2023_DATA_Cv4/crab_crab_ParkingHH_Run2023C_Run2023C_22Sep2023_v4/ is not a valid CRAB project directory.
+INFO 2025-01-08 08:47:26.356 UTC: 	 Log file is /afs/cern.ch/work/c/chatterj/private/XToYH/Run3/CMSSW_14_2_1/src/Analysis/NTuplizer/test/crab.log
+DEBUG 2025-01-08 16:09:16.293 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2025-01-08 16:09:16.294 UTC: 	 Running on: Linux lxplus938.cern.ch 5.14.0-503.15.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 14 15:45:31 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-01-08 16:09:16.294 UTC: 	 Not using Singularity
+DEBUG 2025-01-08 16:09:16.294 UTC: 	 Operating System: Red Hat Enterprise Linux 9.5 (Plow)
+DEBUG 2025-01-08 16:09:16.294 UTC: 	 Executing command: 'status'
+DEBUG 2025-01-08 16:09:16.295 UTC: 	 Found CRAB cache file /afs/cern.ch/user/c/chatterj/.crab3
+ERROR 2025-01-08 16:09:16.311 UTC: 	 Error: crab_2023_DATA_Cv4/crab_crab_JetMET0_Run2023C_Run2023C_22Sep2023_v4/ is not a valid CRAB project directory.
+ERROR 2025-01-08 16:09:16.311 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])  # the crab command to be executed
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/status.py", line 48, in __init__
+    SubCommand.__init__(self, logger, cmdargs)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 281, in __init__
+    SubCommand.validateOptions(self)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 691, in validateOptions
+    raise ConfigurationException(msg)
+CRABClient.ClientExceptions.ConfigurationException: [91mError[0m: crab_2023_DATA_Cv4/crab_crab_JetMET0_Run2023C_Run2023C_22Sep2023_v4/ is not a valid CRAB project directory.
+INFO 2025-01-08 16:09:16.339 UTC: 	 Log file is /afs/cern.ch/work/c/chatterj/private/XToYH/Run3/CMSSW_14_2_1/src/Analysis/NTuplizer/test/crab.log
+DEBUG 2025-01-08 16:09:17.893 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2025-01-08 16:09:17.893 UTC: 	 Running on: Linux lxplus938.cern.ch 5.14.0-503.15.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 14 15:45:31 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-01-08 16:09:17.893 UTC: 	 Not using Singularity
+DEBUG 2025-01-08 16:09:17.893 UTC: 	 Operating System: Red Hat Enterprise Linux 9.5 (Plow)
+DEBUG 2025-01-08 16:09:17.893 UTC: 	 Executing command: 'status'
+DEBUG 2025-01-08 16:09:17.893 UTC: 	 Found CRAB cache file /afs/cern.ch/user/c/chatterj/.crab3
+ERROR 2025-01-08 16:09:17.894 UTC: 	 Error: crab_2023_DATA_Cv4/crab_crab_JetMET1_Run2023C_Run2023C_22Sep2023_v4/ is not a valid CRAB project directory.
+ERROR 2025-01-08 16:09:17.894 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])  # the crab command to be executed
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/status.py", line 48, in __init__
+    SubCommand.__init__(self, logger, cmdargs)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 281, in __init__
+    SubCommand.validateOptions(self)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 691, in validateOptions
+    raise ConfigurationException(msg)
+CRABClient.ClientExceptions.ConfigurationException: [91mError[0m: crab_2023_DATA_Cv4/crab_crab_JetMET1_Run2023C_Run2023C_22Sep2023_v4/ is not a valid CRAB project directory.
+INFO 2025-01-08 16:09:17.895 UTC: 	 Log file is /afs/cern.ch/work/c/chatterj/private/XToYH/Run3/CMSSW_14_2_1/src/Analysis/NTuplizer/test/crab.log
+DEBUG 2025-01-08 16:09:19.217 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2025-01-08 16:09:19.218 UTC: 	 Running on: Linux lxplus938.cern.ch 5.14.0-503.15.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 14 15:45:31 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-01-08 16:09:19.218 UTC: 	 Not using Singularity
+DEBUG 2025-01-08 16:09:19.218 UTC: 	 Operating System: Red Hat Enterprise Linux 9.5 (Plow)
+DEBUG 2025-01-08 16:09:19.218 UTC: 	 Executing command: 'status'
+DEBUG 2025-01-08 16:09:19.218 UTC: 	 Found CRAB cache file /afs/cern.ch/user/c/chatterj/.crab3
+ERROR 2025-01-08 16:09:19.218 UTC: 	 Error: crab_2023_DATA_Cv4/crab_crab_ParkingHH_Run2023C_Run2023C_22Sep2023_v4/ is not a valid CRAB project directory.
+ERROR 2025-01-08 16:09:19.218 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])  # the crab command to be executed
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/status.py", line 48, in __init__
+    SubCommand.__init__(self, logger, cmdargs)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 281, in __init__
+    SubCommand.validateOptions(self)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 691, in validateOptions
+    raise ConfigurationException(msg)
+CRABClient.ClientExceptions.ConfigurationException: [91mError[0m: crab_2023_DATA_Cv4/crab_crab_ParkingHH_Run2023C_Run2023C_22Sep2023_v4/ is not a valid CRAB project directory.
+INFO 2025-01-08 16:09:19.220 UTC: 	 Log file is /afs/cern.ch/work/c/chatterj/private/XToYH/Run3/CMSSW_14_2_1/src/Analysis/NTuplizer/test/crab.log
+DEBUG 2025-01-10 10:59:32.975 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2025-01-10 10:59:32.975 UTC: 	 Running on: Linux lxplus949.cern.ch 5.14.0-503.14.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 7 15:41:49 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-01-10 10:59:32.975 UTC: 	 Not using Singularity
+DEBUG 2025-01-10 10:59:32.975 UTC: 	 Operating System: Red Hat Enterprise Linux 9.5 (Plow)
+DEBUG 2025-01-10 10:59:32.975 UTC: 	 Executing command: 'status'
+DEBUG 2025-01-10 10:59:32.975 UTC: 	 Found CRAB cache file /afs/cern.ch/user/c/chatterj/.crab3
+DEBUG 2025-01-10 10:59:34.466 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2025-01-10 10:59:34.466 UTC: 	 Running on: Linux lxplus949.cern.ch 5.14.0-503.14.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 7 15:41:49 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-01-10 10:59:34.466 UTC: 	 Not using Singularity
+DEBUG 2025-01-10 10:59:34.466 UTC: 	 Operating System: Red Hat Enterprise Linux 9.5 (Plow)
+DEBUG 2025-01-10 10:59:34.467 UTC: 	 Executing command: 'status'
+DEBUG 2025-01-10 10:59:34.467 UTC: 	 Found CRAB cache file /afs/cern.ch/user/c/chatterj/.crab3
+DEBUG 2025-01-10 10:59:35.881 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2025-01-10 10:59:35.881 UTC: 	 Running on: Linux lxplus949.cern.ch 5.14.0-503.14.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 7 15:41:49 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-01-10 10:59:35.881 UTC: 	 Not using Singularity
+DEBUG 2025-01-10 10:59:35.881 UTC: 	 Operating System: Red Hat Enterprise Linux 9.5 (Plow)
+DEBUG 2025-01-10 10:59:35.881 UTC: 	 Executing command: 'status'
+DEBUG 2025-01-10 10:59:35.881 UTC: 	 Found CRAB cache file /afs/cern.ch/user/c/chatterj/.crab3
+DEBUG 2025-02-05 14:24:33.487 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2025-02-05 14:24:33.487 UTC: 	 Running on: Linux lxplus997.cern.ch 5.14.0-503.16.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 21 07:26:21 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-02-05 14:24:33.487 UTC: 	 Not using Singularity
+DEBUG 2025-02-05 14:24:33.487 UTC: 	 Operating System: Red Hat Enterprise Linux 9.5 (Plow)
+DEBUG 2025-02-05 14:24:33.487 UTC: 	 Executing command: 'kill'
+DEBUG 2025-02-05 14:24:33.488 UTC: 	 Found CRAB cache file /afs/cern.ch/user/c/chatterj/.crab3
+ERROR 2025-02-05 14:24:33.488 UTC: 	 Cannot find .requestcache file in CRAB project directory /afs/cern.ch/work/c/chatterj/private/XToYH/Run3/CMSSW_14_2_1/src/Analysis/NTuplizer/test/crab_2022EE_MC_SIGNAL/crab_crab_NMSSM_XtoYHto4B_MX-300_MY-125_TuneCP5_13p6TeV_madgraph-pythia8
+ERROR 2025-02-05 14:24:33.488 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])  # the crab command to be executed
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 281, in __init__
+    SubCommand.validateOptions(self)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 695, in validateOptions
+    self.loadLocalCache()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 537, in loadLocalCache
+    raise ex
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 531, in loadLocalCache
+    self.cachedinfo, self.logfile = loadCache(self.requestarea, self.logger)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/ClientUtilities.py", line 445, in loadCache
+    raise CachefileNotFoundException(msg)
+CRABClient.ClientExceptions.CachefileNotFoundException: Cannot find .requestcache file in CRAB project directory /afs/cern.ch/work/c/chatterj/private/XToYH/Run3/CMSSW_14_2_1/src/Analysis/NTuplizer/test/crab_2022EE_MC_SIGNAL/crab_crab_NMSSM_XtoYHto4B_MX-300_MY-125_TuneCP5_13p6TeV_madgraph-pythia8
+INFO 2025-02-05 14:24:33.519 UTC: 	 Log file is /afs/cern.ch/work/c/chatterj/private/XToYH/Run3/CMSSW_14_2_1/src/Analysis/NTuplizer/test/crab.log
+DEBUG 2025-03-20 09:03:28.163 UTC: 	 CRAB Client version: v3.250318
+DEBUG 2025-03-20 09:03:28.163 UTC: 	 Running on: Linux lxplus926.cern.ch 5.14.0-503.23.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Mon Jan 20 10:19:28 EST 2025 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-03-20 09:03:28.163 UTC: 	 Not using Singularity
+DEBUG 2025-03-20 09:03:28.163 UTC: 	 Operating System: Red Hat Enterprise Linux 9.5 (Plow)
+DEBUG 2025-03-20 09:03:28.163 UTC: 	 Executing command: 'submit'
+DEBUG 2025-03-20 09:03:28.163 UTC: 	 Found CRAB cache file /afs/cern.ch/user/c/chatterj/.crab3
+INFO 2025-03-20 09:03:28.163 UTC: 	 Will use CRAB configuration file crabfile_2023BPiX_JetMET1_Run2023D_Run2023D_22Sep2023_v1.py
+DEBUG 2025-03-20 09:03:28.164 UTC: 	 Loading CRAB configuration file.
+DEBUG 2025-03-20 09:03:28.807 UTC: 	 Will use CRAB plugin ANALYSIS (i.e. will run an analysis job type).
+ERROR 2025-03-20 09:03:28.808 UTC: 	 Working area '/afs/cern.ch/work/c/chatterj/private/XToYH/Run3/CMSSW_14_2_1/src/Analysis/NTuplizer/test/crab_2023BPiX_DATA_D/crab_crab_JetMET1_Run2023D_Run2023D_22Sep2023_v1' already exists 
+Please change the requestName in the config file
+ERROR 2025-03-20 09:03:28.808 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.250318.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.250318.00/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])  # the crab command to be executed
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.250318.00/lib/CRABClient/Commands/submit.py", line 37, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.250318.00/lib/CRABClient/Commands/SubCommand.py", line 328, in __init__
+    self.requestarea, self.requestname, self.logfile = createWorkArea(
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.250318.00/lib/CRABClient/ClientUtilities.py", line 392, in createWorkArea
+    raise ConfigException("Working area '%s' already exists \nPlease change the requestName in the config file" % fullpath)
+CRABClient.ClientExceptions.ConfigException: Working area '/afs/cern.ch/work/c/chatterj/private/XToYH/Run3/CMSSW_14_2_1/src/Analysis/NTuplizer/test/crab_2023BPiX_DATA_D/crab_crab_JetMET1_Run2023D_Run2023D_22Sep2023_v1' already exists 
+Please change the requestName in the config file
+INFO 2025-03-20 09:03:29.118 UTC: 	 Log file is /afs/cern.ch/work/c/chatterj/private/XToYH/Run3/CMSSW_14_2_1/src/Analysis/NTuplizer/test/crab.log

@@ -1,0 +1,5 @@
+ ##################################################################### 
+ # WARNING: the module CondCore.DBCommon.CondDBSetup is deprecated.  # 
+ # Please import CondCore.CondDB.CondDB_cfi                          # 
+ ##################################################################### 
+jecDBFile /afs/cern.ch/work/c/chatterj/private/XToYH/Run3/CMSSW_14_2_1/src/Analysis/NTuplizer/data/JEC/Summer22_22Sep2023_V2_MC.db
