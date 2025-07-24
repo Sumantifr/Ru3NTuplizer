@@ -14,7 +14,7 @@ Framework for ntuple production in Run 3 (from MINIAOD samples)
 
 - cd CMSSW_15_0_9/src
 
-- git clone https://github.com/Sumantifr/XtoYH4b.git . <br/>
+- git clone https://github.com/Sumantifr/Ru3NTuplizer.git . <br/>
   *(Don't forget '.')*
 
 - scram b -j10 
