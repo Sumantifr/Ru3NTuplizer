@@ -945,8 +945,8 @@ private:
   float PFJetAK8_chrad[njetmxAK8], PFJetAK8_pTD[njetmxAK8]; 
   float PFJetAK8_sdmass[njetmxAK8], PFJetAK8_tau1[njetmxAK8], PFJetAK8_tau2[njetmxAK8], PFJetAK8_tau3[njetmxAK8];
   // Subjet properties //
-  float PFJetAK8_sub1pt[njetmxAK8], PFJetAK8_sub1eta[njetmxAK8], PFJetAK8_sub1phi[njetmxAK8], PFJetAK8_sub1mass[njetmxAK8], PFJetAK8_sub1JEC[njetmxAK8], PFJetAK8_sub1btag[njetmxAK8]; 
-  float PFJetAK8_sub2pt[njetmxAK8], PFJetAK8_sub2eta[njetmxAK8], PFJetAK8_sub2phi[njetmxAK8], PFJetAK8_sub2mass[njetmxAK8], PFJetAK8_sub2JEC[njetmxAK8], PFJetAK8_sub2btag[njetmxAK8];
+  float PFJetAK8_sub1pt[njetmxAK8], PFJetAK8_sub1eta[njetmxAK8], PFJetAK8_sub1phi[njetmxAK8], PFJetAK8_sub1mass[njetmxAK8], PFJetAK8_sub1JEC[njetmxAK8], PFJetAK8_sub1btag[njetmxAK8], PFJetAK8_sub1btag_DeepJet[njetmxAK8], PFJetAK8_sub1btag_UParT[njetmxAK8]; 
+  float PFJetAK8_sub2pt[njetmxAK8], PFJetAK8_sub2eta[njetmxAK8], PFJetAK8_sub2phi[njetmxAK8], PFJetAK8_sub2mass[njetmxAK8], PFJetAK8_sub2JEC[njetmxAK8], PFJetAK8_sub2btag[njetmxAK8], PFJetAK8_sub2btag_DeepJet[njetmxAK8], PFJetAK8_sub2btag_UParT[njetmxAK8];
   
   // JEC factors & uncs //
   float PFJetAK8_JEC[njetmxAK8];
@@ -998,8 +998,11 @@ private:
   float PFJetAK4_btagDeepFlavB[njetmx], PFJetAK4_btagDeepFlavCvB[njetmx], PFJetAK4_btagDeepFlavCvL[njetmx], PFJetAK4_btagDeepFlavQG[njetmx];
   float PFJetAK4_btagPNetB[njetmx], PFJetAK4_btagPNetCvNotB[njetmx], PFJetAK4_btagPNetCvB[njetmx], PFJetAK4_btagPNetCvL[njetmx], PFJetAK4_btagPNetQG[njetmx];
   float PFJetAK4_btagRobustParTAK4B[njetmx], PFJetAK4_btagRobustParTAK4CvB[njetmx], PFJetAK4_btagRobustParTAK4CvL[njetmx], PFJetAK4_btagRobustParTAK4QG[njetmx];
+  float PFJetAK4_btagUParTAK4B[njetmx], PFJetAK4_btagUParTAK4CvB[njetmx], PFJetAK4_btagUParTAK4CvL[njetmx], PFJetAK4_btagUParTAK4QG[njetmx];
   // Energy regression for b jets //
   float PFJetAK4_PNetRegPtRawCorr[njetmx], PFJetAK4_PNetRegPtRawCorrNeutrino[njetmx], PFJetAK4_PNetRegPtRawRes[njetmx];
+  float PFJetAK4_UParTRegPtRawCorr[njetmx], PFJetAK4_UParTRegPtRawCorrNeutrino[njetmx], PFJetAK4_UParTRegPtRawRes[njetmx];
+  float PFJetAK4_UParTV1RegPtRawCorr[njetmx], PFJetAK4_UParTV1RegPtRawCorrNeutrino[njetmx], PFJetAK4_UParTV1RegPtRawRes[njetmx];
   // DeepFlav SFs (usually not stored here) //
   float PFJetAK4_btag_DeepFlav_SF[njetmx], PFJetAK4_btag_DeepFlav_SF_up[njetmx], PFJetAK4_btag_DeepFlav_SF_dn[njetmx];
   // JER factor and uncs //
@@ -1036,7 +1039,7 @@ private:
   // QG Likelihood (probably not required for Run3)
   float PFJetAK4_qgl[njetmx];
   // Pileup ID
-  float PFJetAK4_PUID[njetmx];
+  float PFJetAK4_PUID[njetmx], PFJetAK4_PUID_PNet[njetmx];
   // jet charge //
   float PFJetAK4_charge_kappa_0p3[njetmx], PFJetAK4_charge_kappa_0p6[njetmx], PFJetAK4_charge_kappa_1p0[njetmx];
   float PFJetAK4_charged_ptsum[njetmx];
@@ -1708,7 +1711,15 @@ Leptop::Leptop(const edm::ParameterSet& pset):
   
   mJECUncFileAK4 = pset.getParameter<std::string>("JECUncFileAK4");
   mJECUncFileAK8 = pset.getParameter<std::string>("JECUncFileAK8");       
-  
+ 
+  if(year=="2024"){
+    mJECL1FastFileAK8 = mJECL1FastFileAK4;
+    mJECL2RelativeFileAK8 = mJECL2RelativeFileAK4;
+    mJECL3AbsoluteFileAK8 = mJECL3AbsoluteFileAK4;
+    mJECL2L3ResidualFileAK8 = mJECL2L3ResidualFileAK4;
+    mJECUncFileAK8 = mJECUncFileAK4;
+  } 
+
   // JER Files //
   
   mPtResoFileAK4  = pset.getParameter<std::string>("PtResoFileAK4");
@@ -1737,7 +1748,6 @@ Leptop::Leptop(const edm::ParameterSet& pset):
 	triggerPrescales_ = consumes<pat::PackedTriggerPrescales>(pset.getParameter<edm::InputTag>("prescales"));
 	tok_L1_GtHandle = consumes<BXVector<GlobalAlgBlk>>( pset.getParameter<edm::InputTag>("L1_GtHandle"));            
     //l1GtMenuToken_           (esConsumes<L1TUtmTriggerMenu, L1TUtmTriggerMenuRcd>());
-  
   }
   
   // Prefire //
@@ -2042,6 +2052,8 @@ Leptop::Leptop(const edm::ParameterSet& pset):
   T1->Branch("PFJetAK8_sub1mass",PFJetAK8_sub1mass,"PFJetAK8_sub1mass[nPFJetAK8]/F");
   T1->Branch("PFJetAK8_sub1JEC",PFJetAK8_sub1JEC,"PFJetAK8_sub1JEC[nPFJetAK8]/F");
   T1->Branch("PFJetAK8_sub1btag",PFJetAK8_sub1btag,"PFJetAK8_sub1btag[nPFJetAK8]/F");
+  T1->Branch("PFJetAK8_sub1btag_DeepJet",PFJetAK8_sub1btag_DeepJet,"PFJetAK8_sub1btag_DeepJet[nPFJetAK8]/F");
+  T1->Branch("PFJetAK8_sub1btag_UParT",PFJetAK8_sub1btag_UParT,"PFJetAK8_sub1btag_UParT[nPFJetAK8]/F");
   
   T1->Branch("PFJetAK8_sub2pt",PFJetAK8_sub2pt,"PFJetAK8_sub2pt[nPFJetAK8]/F");
   T1->Branch("PFJetAK8_sub2eta",PFJetAK8_sub2eta,"PFJetAK8_sub2eta[nPFJetAK8]/F");
@@ -2049,6 +2061,8 @@ Leptop::Leptop(const edm::ParameterSet& pset):
   T1->Branch("PFJetAK8_sub2mass",PFJetAK8_sub2mass,"PFJetAK8_sub2mass[nPFJetAK8]/F");
   T1->Branch("PFJetAK8_sub2JEC",PFJetAK8_sub2JEC,"PFJetAK8_sub2JEC[nPFJetAK8]/F");
   T1->Branch("PFJetAK8_sub2btag",PFJetAK8_sub2btag,"PFJetAK8_sub2btag[nPFJetAK8]/F");
+  T1->Branch("PFJetAK8_sub2btag_DeepJet",PFJetAK8_sub2btag_DeepJet,"PFJetAK8_sub2btag_DeepJet[nPFJetAK8]/F");
+  T1->Branch("PFJetAK8_sub2btag_UParT",PFJetAK8_sub2btag_UParT,"PFJetAK8_sub2btag_UParT[nPFJetAK8]/F");
   
   T1->Branch("PFJetAK8_jesup_AbsoluteStat",PFJetAK8_jesup_AbsoluteStat,"PFJetAK8_jesup_AbsoluteStat[nPFJetAK8]/F");
   T1->Branch("PFJetAK8_jesup_AbsoluteScale",PFJetAK8_jesup_AbsoluteScale,"PFJetAK8_jesup_AbsoluteScale[nPFJetAK8]/F");
@@ -2151,10 +2165,23 @@ Leptop::Leptop(const edm::ParameterSet& pset):
   T1->Branch("PFJetAK4_btagRobustParTAK4CvB",PFJetAK4_btagRobustParTAK4CvB,"PFJetAK4_btagRobustParTAK4CvB[nPFJetAK4]/F");
   T1->Branch("PFJetAK4_btagRobustParTAK4CvL",PFJetAK4_btagRobustParTAK4CvL,"PFJetAK4_btagRobustParTAK4CvL[nPFJetAK4]/F");
   T1->Branch("PFJetAK4_btagRobustParTAK4QG",PFJetAK4_btagRobustParTAK4QG,"PFJetAK4_btagRobustParTAK4QG[nPFJetAK4]/F");
+  T1->Branch("PFJetAK4_btagUParTAK4B",PFJetAK4_btagUParTAK4B,"PFJetAK4_btagUParTAK4B[nPFJetAK4]/F");
+  T1->Branch("PFJetAK4_btagUParTAK4CvB",PFJetAK4_btagUParTAK4CvB,"PFJetAK4_btagUParTAK4CvB[nPFJetAK4]/F");
+  T1->Branch("PFJetAK4_btagUParTAK4CvL",PFJetAK4_btagUParTAK4CvL,"PFJetAK4_btagUParTAK4CvL[nPFJetAK4]/F");
+  T1->Branch("PFJetAK4_btagUParTAK4QG",PFJetAK4_btagUParTAK4QG,"PFJetAK4_btagUParTAK4QG[nPFJetAK4]/F");
   
   T1->Branch("PFJetAK4_PNetRegPtRawCorr",PFJetAK4_PNetRegPtRawCorr,"PFJetAK4_PNetRegPtRawCorr[nPFJetAK4]/F");
   T1->Branch("PFJetAK4_PNetRegPtRawCorrNeutrino",PFJetAK4_PNetRegPtRawCorrNeutrino,"PFJetAK4_PNetRegPtRawCorrNeutrino[nPFJetAK4]/F");
   T1->Branch("PFJetAK4_PNetRegPtRawRes",PFJetAK4_PNetRegPtRawRes,"PFJetAK4_PNetRegPtRawRes[nPFJetAK4]/F");
+  
+  T1->Branch("PFJetAK4_UParTRegPtRawCorr",PFJetAK4_UParTRegPtRawCorr,"PFJetAK4_UParTRegPtRawCorr[nPFJetAK4]/F");
+  T1->Branch("PFJetAK4_UParTRegPtRawCorrNeutrino",PFJetAK4_UParTRegPtRawCorrNeutrino,"PFJetAK4_UParTRegPtRawCorrNeutrino[nPFJetAK4]/F");
+  T1->Branch("PFJetAK4_UParTRegPtRawRes",PFJetAK4_UParTRegPtRawRes,"PFJetAK4_UParTRegPtRawRes[nPFJetAK4]/F");
+  
+  T1->Branch("PFJetAK4_UParTV1RegPtRawCorr",PFJetAK4_UParTV1RegPtRawCorr,"PFJetAK4_UParTV1RegPtRawCorr[nPFJetAK4]/F");
+  T1->Branch("PFJetAK4_UParTV1RegPtRawCorrNeutrino",PFJetAK4_UParTV1RegPtRawCorrNeutrino,"PFJetAK4_UParTV1RegPtRawCorrNeutrino[nPFJetAK4]/F");
+  T1->Branch("PFJetAK4_UParTV1RegPtRawRes",PFJetAK4_UParTV1RegPtRawRes,"PFJetAK4_UParTV1RegPtRawRes[nPFJetAK4]/F");
+  
   
   T1->Branch("PFJetAK4_JEC",PFJetAK4_JEC,"PFJetAK4_JEC[nPFJetAK4]/F");
   
@@ -2166,6 +2193,7 @@ Leptop::Leptop(const edm::ParameterSet& pset):
   T1->Branch("PFJetAK4_partonflav",PFJetAK4_partonflav,"PFJetAK4_partonflav[nPFJetAK4]/I");
   T1->Branch("PFJetAK4_qgl",PFJetAK4_qgl,"PFJetAK4_qgl[nPFJetAK4]/F");
   T1->Branch("PFJetAK4_PUID",PFJetAK4_PUID,"PFJetAK4_PUID[nPFJetAK4]/F");
+  T1->Branch("PFJetAK4_PUID_PNet",PFJetAK4_PUID_PNet,"PFJetAK4_PUID_PNet[nPFJetAK4]/F");
   T1->Branch("PFJetAK4_charge_kappa_0p3",PFJetAK4_charge_kappa_0p3,"PFJetAK4_charge_kappa_0p3[nPFJetAK4]/F");
   T1->Branch("PFJetAK4_charge_kappa_0p6",PFJetAK4_charge_kappa_0p6,"PFJetAK4_charge_kappa_0p6[nPFJetAK4]/F");
   T1->Branch("PFJetAK4_charge_kappa_1p0",PFJetAK4_charge_kappa_1p0,"PFJetAK4_charge_kappa_1p0[nPFJetAK4]/F");
@@ -3153,7 +3181,9 @@ Leptop::analyze(const edm::Event& iEvent, const edm::EventSetup& pset) {
     
 	edm::Handle<edm::TriggerResults> trigRes;
 	iEvent.getByToken(triggerBits_, trigRes);
-  
+
+	if(trigRes.isValid()){
+
 	const edm::TriggerNames &names_ = iEvent.triggerNames(*trigRes);
   
 	edm::Handle<pat::TriggerObjectStandAloneCollection> triggerObjects;
@@ -3271,6 +3301,8 @@ Leptop::analyze(const edm::Event& iEvent, const edm::EventSetup& pset) {
 		//if(iht == (njetmx-1)) break;
 		}
 	}
+
+	}//trigRes.isValid()
     
   } // !isFastSIM
   
@@ -3348,16 +3380,26 @@ Leptop::analyze(const edm::Event& iEvent, const edm::EventSetup& pset) {
       else if(jk==56) {  hlt_PFMETNoMu140_PFMHTNoMu140_IDTight = booltrg[jk]; }
       else if(jk==57) {  hlt_PFMETTypeOne140_PFMHT140_IDTight = booltrg[jk]; }
   }
-    
+
+  /*
+  if(booltrg[nHLTmx]){
+  cout<<"hlt_QuadPFJet70_50_40_35_PFBTagParticleNet_2BTagSum0p65 "<<hlt_QuadPFJet70_50_40_35_PFBTagParticleNet_2BTagSum0p65<<endl;
+  cout<<"hlt_PFHT280_QuadPFJet30_PNet2BTagMean0p55 "<<hlt_PFHT280_QuadPFJet30_PNet2BTagMean0p55<<endl;
+  }
+  */
   // trigger filling end //
   
   // L1 trigger info //
-  
+ 
+  if(!isFastSIM){
+   
   edm::ESHandle<L1TUtmTriggerMenu> L1_menu;
   L1_menu = pset.getHandle(tok_L1_menu);
   
   edm::Handle<BXVector<GlobalAlgBlk>> L1_GtHandle;
   iEvent.getByToken(tok_L1_GtHandle, L1_GtHandle);
+  
+  if(L1_GtHandle.isValid()){
   
   L1_HTT280er = false;
   L1_QuadJet60er2p5 = false;
@@ -3407,8 +3449,12 @@ Leptop::analyze(const edm::Event& iEvent, const edm::EventSetup& pset) {
          }
        }
 
-  
-	}
+
+	 }//L1_menu.isValid()
+	 
+    }//L1_GtHandle.isValid()
+    
+  }//isFastSIM
 	
   // L1 trigger info end //
   
@@ -3417,8 +3463,13 @@ Leptop::analyze(const edm::Event& iEvent, const edm::EventSetup& pset) {
   //  ====  MET filters   ====  //
   
   edm::Handle<edm::TriggerResults> METFilterResults;
+
+  if(!isFastSIM){
+
   iEvent.getByToken(tok_METfilters_, METFilterResults);
-  if(!(METFilterResults.isValid())) iEvent.getByToken(tok_METfilters_, METFilterResults);
+  //cout<<"METFilterResults.isValid() "<<METFilterResults.isValid()<<endl;
+  if(METFilterResults.isValid()){  	  
+  // if(!(METFilterResults.isValid())) iEvent.getByToken(tok_METfilters_, METFilterResults);
   
   const edm::TriggerNames & metfilterName = iEvent.triggerNames(*METFilterResults);
   //Flag_goodVertices
@@ -3440,7 +3491,10 @@ Leptop::analyze(const edm::Event& iEvent, const edm::EventSetup& pset) {
   Flag_ecalBadCalibFilter_ = METFilterResults.product()->accept(metfilterName.triggerIndex("Flag_ecalBadCalibFilter"));
   
   // End of MET filters //
-  
+  }//(METFilterResults.isValid())
+
+  }// !isFastSIM
+
   // ====  Prefire weights ==== //
   
   if(add_prefireweights){
@@ -4211,8 +4265,8 @@ Leptop::analyze(const edm::Event& iEvent, const edm::EventSetup& pset) {
      
       // subjet info & classical observables //
      
-      PFJetAK8_sub1pt[nPFJetAK8] = PFJetAK8_sub1eta[nPFJetAK8] = PFJetAK8_sub1phi[nPFJetAK8] = PFJetAK8_sub1mass[nPFJetAK8] = PFJetAK8_sub1btag[nPFJetAK8] = -100;              
-      PFJetAK8_sub2pt[nPFJetAK8] = PFJetAK8_sub2eta[nPFJetAK8] = PFJetAK8_sub2phi[nPFJetAK8] = PFJetAK8_sub2mass[nPFJetAK8] = PFJetAK8_sub2btag[nPFJetAK8] = -100;                                                        
+      PFJetAK8_sub1pt[nPFJetAK8] = PFJetAK8_sub1eta[nPFJetAK8] = PFJetAK8_sub1phi[nPFJetAK8] = PFJetAK8_sub1mass[nPFJetAK8] = PFJetAK8_sub1btag[nPFJetAK8] = PFJetAK8_sub1btag_DeepJet[nPFJetAK8] = PFJetAK8_sub1btag_UParT[nPFJetAK8] = -100;              
+      PFJetAK8_sub2pt[nPFJetAK8] = PFJetAK8_sub2eta[nPFJetAK8] = PFJetAK8_sub2phi[nPFJetAK8] = PFJetAK8_sub2mass[nPFJetAK8] = PFJetAK8_sub2btag[nPFJetAK8] = PFJetAK8_sub1btag_DeepJet[nPFJetAK8] = PFJetAK8_sub2btag_UParT[nPFJetAK8] = -100;                                                        
       PFJetAK8_sdmass[nPFJetAK8] = PFJetAK8_tau1[nPFJetAK8] = PFJetAK8_tau2[nPFJetAK8] = PFJetAK8_tau3[nPFJetAK8] = -100;                                                                      
       
       if(isSoftDrop){
@@ -4234,6 +4288,8 @@ Leptop::analyze(const edm::Event& iEvent, const edm::EventSetup& pset) {
 				PFJetAK8_sub1mass[nPFJetAK8] = ak8subjet->correctedP4("Uncorrected").mass();	 
 				PFJetAK8_sub1JEC[nPFJetAK8] = ak8subjet->pt()*1./ak8subjet->correctedP4("Uncorrected").pt();
 				PFJetAK8_sub1btag[nPFJetAK8] = ak8subjet->bDiscriminator("pfDeepCSVJetTags:probb")+ak8subjet->bDiscriminator("pfDeepCSVJetTags:probbb");
+				PFJetAK8_sub1btag_DeepJet[nPFJetAK8] = ak8subjet->bDiscriminator("pfDeepFlavourJetTags:probb")+ak8subjet->bDiscriminator("pfDeepFlavourJetTags:probbb");
+				PFJetAK8_sub1btag_UParT[nPFJetAK8] = ak8subjet->bDiscriminator("pfUnifiedParticleTransformerAK4JetTags:probb")+ak8subjet->bDiscriminator("pfUnifiedParticleTransformerAK4JetTags:probbb");
 			}
 			else if(isub==1){
 				PFJetAK8_sub2pt[nPFJetAK8] = ak8subjet->correctedP4("Uncorrected").pt();
@@ -4242,6 +4298,8 @@ Leptop::analyze(const edm::Event& iEvent, const edm::EventSetup& pset) {
 				PFJetAK8_sub2mass[nPFJetAK8] = ak8subjet->correctedP4("Uncorrected").mass();	
 				PFJetAK8_sub2JEC[nPFJetAK8] = ak8subjet->pt()*1./ak8subjet->correctedP4("Uncorrected").pt(); 
 				PFJetAK8_sub2btag[nPFJetAK8] = ak8subjet->bDiscriminator("pfDeepCSVJetTags:probb")+ak8subjet->bDiscriminator("pfDeepCSVJetTags:probbb");
+				PFJetAK8_sub2btag_DeepJet[nPFJetAK8] = ak8subjet->bDiscriminator("pfDeepFlavourJetTags:probb")+ak8subjet->bDiscriminator("pfDeepFlavourJetTags:probbb");
+				PFJetAK8_sub2btag_UParT[nPFJetAK8] = ak8subjet->bDiscriminator("pfUnifiedParticleTransformerAK4JetTags:probb")+ak8subjet->bDiscriminator("pfUnifiedParticleTransformerAK4JetTags:probbb");
 			}
 		}
 		
@@ -4438,6 +4496,7 @@ Leptop::analyze(const edm::Event& iEvent, const edm::EventSetup& pset) {
       
     PFJetAK4_qgl[nPFJetAK4] = ak4jet.userFloat("qgLikelihood");//"QGTagger:qgLikelihood");
     PFJetAK4_PUID[nPFJetAK4] = ak4jet.userFloat("pileupJetId_fullDiscriminant");//"pileupJetId:fullDiscriminant");
+    PFJetAK4_PUID_PNet[nPFJetAK4] = (1.- ak4jet.bDiscriminator("pfParticleNetAK4JetTags:probpu")); //ref: https://cmssdt.cern.ch/lxr/source/PhysicsTools/NanoAOD/python/custom_jme_cff.py (L0225)
     
     std::vector<reco::CandidatePtr> daughters(ak4jet.daughterPtrVector());
     std::sort(daughters.begin(), daughters.end(), [](const reco::CandidatePtr &p1, const reco::CandidatePtr &p2)
@@ -4481,6 +4540,16 @@ Leptop::analyze(const edm::Event& iEvent, const edm::EventSetup& pset) {
     PFJetAK4_btagRobustParTAK4CvL[nPFJetAK4] = (ak4jet.bDiscriminator("pfParticleTransformerAK4JetTags:probc")+ak4jet.bDiscriminator("pfParticleTransformerAK4JetTags:probuds")+ak4jet.bDiscriminator("pfParticleTransformerAK4JetTags:probg"))>0 ? (ak4jet.bDiscriminator("pfParticleTransformerAK4JetTags:probc")*1./(ak4jet.bDiscriminator("pfParticleTransformerAK4JetTags:probc")+ak4jet.bDiscriminator("pfParticleTransformerAK4JetTags:probuds")+ak4jet.bDiscriminator("pfParticleTransformerAK4JetTags:probg"))) : -10;
     PFJetAK4_btagRobustParTAK4QG[nPFJetAK4] =  (ak4jet.bDiscriminator("pfParticleTransformerAK4JetTags:probg")+ak4jet.bDiscriminator("pfParticleTransformerAK4JetTags:probuds"))>0 ? (ak4jet.bDiscriminator("pfParticleTransformerAK4JetTags:probg")*1./(ak4jet.bDiscriminator("pfParticleTransformerAK4JetTags:probg") + ak4jet.bDiscriminator("pfParticleTransformerAK4JetTags:probuds"))) : -10;
 
+	//PFJetAK4_btagUParTAK4B[nPFJetAK4] =   (ak4jet.bDiscriminator("pfUnifiedParticleTransformerAK4JetTags:probb") + ak4jet.bDiscriminator("pfUnifiedParticleTransformerAK4JetTags:probbb")+ak4jet.bDiscriminator("pfUnifiedParticleTransformerAK4JetTags:problepb"))>0 ? (ak4jet.bDiscriminator("pfUnifiedParticleTransformerAK4JetTags:probb") + ak4jet.bDiscriminator("pfUnifiedParticleTransformerAK4JetTags:probbb")+ak4jet.bDiscriminator("pfUnifiedParticleTransformerAK4JetTags:problepb")):-10;
+    //PFJetAK4_btagUParTAK4CvB[nPFJetAK4] = (ak4jet.bDiscriminator("pfNegativeUnifiedParticleTransformerAK4JetTags:probc")+ak4jet.bDiscriminator("pfNegativeUnifiedParticleTransformerAK4JetTags:probb") + ak4jet.bDiscriminator("pfNegativeUnifiedParticleTransformerAK4JetTags:probbb")+ak4jet.bDiscriminator("pfParticleTransformerAK4JetTags:problepb"))>0 ? (ak4jet.bDiscriminator("pfParticleTransformerAK4JetTags:probc")*1./(ak4jet.bDiscriminator("pfParticleTransformerAK4JetTags:probc")+ak4jet.bDiscriminator("pfParticleTransformerAK4JetTags:probb") + ak4jet.bDiscriminator("pfParticleTransformerAK4JetTags:probbb")+ak4jet.bDiscriminator("pfParticleTransformerAK4JetTags:problepb"))) : -10;
+    //PFJetAK4_btagUParTAK4CvL[nPFJetAK4] = (ak4jet.bDiscriminator("pfParticleTransformerAK4JetTags:probc")+ak4jet.bDiscriminator("pfParticleTransformerAK4JetTags:probuds")+ak4jet.bDiscriminator("pfParticleTransformerAK4JetTags:probg"))>0 ? (ak4jet.bDiscriminator("pfParticleTransformerAK4JetTags:probc")*1./(ak4jet.bDiscriminator("pfParticleTransformerAK4JetTags:probc")+ak4jet.bDiscriminator("pfParticleTransformerAK4JetTags:probuds")+ak4jet.bDiscriminator("pfParticleTransformerAK4JetTags:probg"))) : -10;
+    //PFJetAK4_btagUParTAK4QG[nPFJetAK4] =  (ak4jet.bDiscriminator("pfParticleTransformerAK4JetTags:probg")+ak4jet.bDiscriminator("pfParticleTransformerAK4JetTags:probuds"))>0 ? (ak4jet.bDiscriminator("pfParticleTransformerAK4JetTags:probg")*1./(ak4jet.bDiscriminator("pfParticleTransformerAK4JetTags:probg") + ak4jet.bDiscriminator("pfParticleTransformerAK4JetTags:probuds"))) : -10;
+	
+	PFJetAK4_btagUParTAK4B[nPFJetAK4] =   (ak4jet.bDiscriminator("pfUnifiedParticleTransformerAK4DiscriminatorsJetTags:BvsAll"));
+	PFJetAK4_btagUParTAK4CvB[nPFJetAK4] = (ak4jet.bDiscriminator("pfUnifiedParticleTransformerAK4DiscriminatorsJetTags:CvsB"));
+	PFJetAK4_btagUParTAK4CvL[nPFJetAK4] = (ak4jet.bDiscriminator("pfUnifiedParticleTransformerAK4DiscriminatorsJetTags:CvsL"));
+	PFJetAK4_btagUParTAK4QG[nPFJetAK4] =  (ak4jet.bDiscriminator("pfUnifiedParticleTransformerAK4DiscriminatorsJetTags:QvsG"));
+	
 	if(read_btagSF){
 
 		BTagEntry::JetFlavor btv_flav;
@@ -4498,6 +4567,14 @@ Leptop::analyze(const edm::Event& iEvent, const edm::EventSetup& pset) {
 	PFJetAK4_PNetRegPtRawCorr[nPFJetAK4] = ak4jet.bDiscriminator("pfParticleNetFromMiniAODAK4PuppiCentralJetTags:ptcorr");
 	PFJetAK4_PNetRegPtRawCorrNeutrino[nPFJetAK4] = ak4jet.bDiscriminator("pfParticleNetFromMiniAODAK4PuppiCentralJetTags:ptnu");
 	PFJetAK4_PNetRegPtRawRes[nPFJetAK4]  = (ak4jet.pt()>15. && fabs(ak4jet.eta())<2.5)? (0.5*(ak4jet.bDiscriminator("pfParticleNetFromMiniAODAK4PuppiCentralJetTags:ptreshigh") - ak4jet.bDiscriminator("pfParticleNetFromMiniAODAK4PuppiCentralJetTags:ptreslow"))):(0.5*(ak4jet.bDiscriminator("pfParticleNetFromMiniAODAK4PuppiForwardJetTags:ptreshigh") - ak4jet.bDiscriminator("pfParticleNetFromMiniAODAK4PuppiForwardJetTags:ptreslow")));
+	
+	PFJetAK4_UParTRegPtRawCorr[nPFJetAK4] = ak4jet.bDiscriminator("pfUnifiedParticleTransformerAK4JetTags:ptcorr");
+	PFJetAK4_UParTRegPtRawCorrNeutrino[nPFJetAK4] = ak4jet.bDiscriminator("pfUnifiedParticleTransformerAK4JetTags:ptnu");
+	PFJetAK4_UParTRegPtRawRes[nPFJetAK4]  = (ak4jet.pt()>15. && fabs(ak4jet.eta())<2.5)? (0.5*(ak4jet.bDiscriminator("pfUnifiedParticleTransformerAK4JetTags:ptreshigh") - ak4jet.bDiscriminator("pfUnifiedParticleTransformerAK4JetTags:ptreslow"))):(0.5*(ak4jet.bDiscriminator("pfUnifiedParticleTransformerAK4JetTags:ptreshigh") - ak4jet.bDiscriminator("pfUnifiedParticleTransformerAK4JetTags:ptreslow")));
+	
+	PFJetAK4_UParTV1RegPtRawCorr[nPFJetAK4] = ak4jet.bDiscriminator("pfUnifiedParticleTransformerAK4V1JetTags:ptcorr");
+	PFJetAK4_UParTV1RegPtRawCorrNeutrino[nPFJetAK4] = ak4jet.bDiscriminator("pfUnifiedParticleTransformerAK4V1JetTags:ptnu");
+	PFJetAK4_UParTV1RegPtRawRes[nPFJetAK4]  = (ak4jet.pt()>15. && fabs(ak4jet.eta())<2.5)? (0.5*(ak4jet.bDiscriminator("pfUnifiedParticleTransformerAK4V1JetTags:ptreshigh") - ak4jet.bDiscriminator("pfUnifiedParticleTransformerAK4V1JetTags:ptreslow"))):(0.5*(ak4jet.bDiscriminator("pfUnifiedParticleTransformerAK4V1JetTags:ptreshigh") - ak4jet.bDiscriminator("pfUnifiedParticleTransformerAK4V1JetTags:ptreslow")));
 	 
 	// Note that btag SF is derived after applying JEC //
      

@@ -1,0 +1,6 @@
+/ParkingHH/Run2024C-2024CDEReprocessing-v1/MINIAOD
+/ParkingHH/Run2024D-2024CDEReprocessing-v1/MINIAOD
+/ParkingHH/Run2024E-2024CDEReprocessing-v1/MINIAOD
+/ParkingHH/Run2024F-PromptReco-v1/MINIAOD
+/ParkingHH/Run2024G-PromptReco-v1/MINIAOD
+/ParkingHH/Run2024H-PromptReco-v1/MINIAOD
