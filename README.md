@@ -10,9 +10,9 @@ Framework for ntuple production in Run 3 (from MINIAOD samples)
 
 - cd XtoYH
 
-- cmsrel CMSSW_14_2_1 <br/>
+- cmsrel CMSSW_15_0_9 <br/>
 
-- cd CMSSW_14_2_1/src
+- cd CMSSW_15_0_9/src
 
 - git clone https://github.com/Sumantifr/XtoYH4b.git . <br/>
   *(Don't forget '.')*
@@ -21,7 +21,7 @@ Framework for ntuple production in Run 3 (from MINIAOD samples)
 
 ## For a test run: 
 
-- cd CMSSSW_14_2_1/src
+- cd CMSSW_15_0_9/src
 
 - cmsenv
 
@@ -35,7 +35,7 @@ Enjoy!
 
 ## For submitting crab jobs (MC):
 
-- cd CMSSSW_14_2_1/src
+- cd CMSSW_15_0_9/src
 
 - cmsenv
 
