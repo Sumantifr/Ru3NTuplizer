@@ -25,7 +25,7 @@ elif [ $YEAR == "2024" ] || [ $YEAR == "2024CDE" ] || [ $YEAR == "2024FGHI" ]; t
 elif [ $YEAR == "2025" ]; then
 	golden_json='/eos/user/c/cmsdqm/www/CAF/certification/Collisions25/Cert_Collisions2025_391658_398860_Golden.json'
 elif [ $YEAR == "2026" ]; then
-	golden_json='/eos/user/c/cmsdqm/www/CAF/certification/Collisions26/Cert_Collisions2026_401624_401693_Golden.json'
+	golden_json='/eos/user/c/cmsdqm/www/CAF/certification/Collisions26/Cert_Collisions2026_401624_403937_golden.json'
 else
 	golden_json='/eos/user/c/cmsdqm/www/CAF/certification/Collisions24/Cert_Collisions2026_401624_403937_golden.json'
 fi
