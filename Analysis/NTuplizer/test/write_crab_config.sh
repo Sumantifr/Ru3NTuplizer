@@ -9,6 +9,7 @@ DBS=$7
 YEAR=$8
 IsDATA=$9
 ERA=${10}
+GENERATOR=${11}
 
 temp=crabfile_${YEAR}_${1}.py
 
@@ -19,8 +20,14 @@ if [ $YEAR == "2022" ] || [ $YEAR == "2022EE" ]; then
 	golden_json='/eos/user/c/cmsdqm/www/CAF/certification/Collisions22/Cert_Collisions2022_355100_362760_Golden.json'
 elif [ $YEAR == "2023" ] || [ $YEAR == "2023BPiX" ]; then
 	golden_json='/eos/user/c/cmsdqm/www/CAF/certification/Collisions23/Cert_Collisions2023_366442_370790_Golden.json'
-else
+elif [ $YEAR == "2024" ] || [ $YEAR == "2024CDE" ] || [ $YEAR == "2024FGHI" ]; then
 	golden_json='/eos/user/c/cmsdqm/www/CAF/certification/Collisions24/Cert_Collisions2024_378981_386951_Golden.json'
+elif [ $YEAR == "2025" ]; then
+	golden_json='/eos/user/c/cmsdqm/www/CAF/certification/Collisions25/Cert_Collisions2025_391658_398860_Golden.json'
+elif [ $YEAR == "2026" ]; then
+	golden_json='/eos/user/c/cmsdqm/www/CAF/certification/Collisions26/Cert_Collisions2026_401624_401693_Golden.json'
+else
+	golden_json='/eos/user/c/cmsdqm/www/CAF/certification/Collisions24/Cert_Collisions2026_401624_403937_golden.json'
 fi
 
 truncate -s 0 $temp
@@ -39,13 +46,13 @@ config.JobType.inputFiles = ['JECfiles','JERfiles', 'JetVetoMaps','roccor.Run2.v
 if [[ "$IsDATA" ==  "1" ]]; then
 	echo "config.JobType.pyCfgParams = ['--YEAR','${YEAR}','--ERA','${ERA}','--IsDATA','--IsRun3','1','--ReadJEC','1']" | cat >>$temp
 else
-	echo "config.JobType.pyCfgParams = ['--YEAR','${YEAR}','--ERA','${ERA}','--IsRun3','1','--ReadJEC','1']" | cat >>$temp
+	echo "config.JobType.pyCfgParams = ['--YEAR','${YEAR}','--ERA','${ERA}','--IsRun3','1','--ReadJEC','1','--Generator','${GENERATOR}']" | cat >>$temp
 fi
 #echo "config.JobType.pyCfgParams = ['--YEAR','${YEAR}','--ERA','${ERA}','--IsDATA','$IsDATA','--IsRun3','1','--ReadJEC','1']
 echo "config.JobType.disableAutomaticOutputCollection = True
 config.JobType.outputFiles = ['hist.root','rootuple.root']
 config.JobType.maxJobRuntimeMin = 2700
-config.JobType.maxMemoryMB = 4000
+config.JobType.maxMemoryMB = 2500
 config.JobType.allowUndistributedCMSSW = True
 
 config.Data.inputDataset = '$Dataset'

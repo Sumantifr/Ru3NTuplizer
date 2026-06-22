@@ -11,6 +11,8 @@ argParser.add_argument('--IsDATA', action='store_true', help="Is it DATA? Defaul
 argParser.add_argument('--IsRun3',             action='store',      default=True,   type=bool,      help="Is Run3? Default:YES")
 argParser.add_argument('--ReadJEC',             action='store',      default=True,   type=bool,      help="Read JEC from sqlite? Default:YES")
 argParser.add_argument('--IsFastSIM', action='store_true', help="Is it FastSIM? Default:NO")
+argParser.add_argument('--Generator',             action='store',      default='POWHEG',   type=str,      help="Which Generator?:POWHEG,MC@NLO,MADGRAPH")
+
 args = argParser.parse_args()
 
 IsDATA = args.IsDATA  #bool(False)
@@ -32,6 +34,15 @@ IsRun3 = args.IsRun3 #bool(True)
 ReadJEC = args.ReadJEC #bool(True)
 ReclusterAK8Jets = bool(False)
 FastSIM = False #args.IsFastSIM
+#Generator ID
+GENERATOR_ID = int(1)
+if not IsDATA:
+    if args.Generator == 'MADGRAPH':
+        GENERATOR_ID = 3
+    elif args.Generator == 'MCatNLO':
+        GENERATOR_ID = 2
+    else:#POWHEG
+        GENERATOR_ID = 1
 
 from RecoJets.Configuration.RecoPFJets_cff import *
 from RecoJets.Configuration.RecoGenJets_cff import ak4GenJets, ak8GenJets
@@ -106,9 +117,19 @@ if IsDATA:
         #    process.GlobalTag.globaltag = "140X_dataRun3_Prompt_v4"
         #For MINIAODv6 samples
         process.GlobalTag.globaltag = "150X_dataRun3_v2"
-        JEC_tag = "Summer24Prompt24_Run"+ERA+"nib1_V1_DATA"  # not fully correct for F, G (ignores run-dependence)
-        JER_tag = 'Winter24Prompt24'  ## not correct for BCD
+        JEC_tag = "Summer24Prompt24_Run"+ERA+"nib1_V2_DATA"  # not fully correct for F, G (ignores run-dependence)
+        JER_tag = 'Summer23BPixPrompt23_RunD_JRV1_MC'  ## not correct for BCD
         JetVeto_tag = "Summer24Prompt24_RunBCDEFGHI"
+    elif YEAR=="2025":
+        process.GlobalTag.globaltag = "150X_dataRun3_Prompt_v1"
+        JEC_tag = "Winter25Prompt25_Run"+ERA+"_V3_DATA" 
+        JER_tag = 'Summer23BPixPrompt23_RunD_JRV1_MC'
+        JetVeto_tag = "Winter25Prompt25_RunCDEFG"
+    elif YEAR=="2026":
+        process.GlobalTag.globaltag = "160X_dataRun3_Prompt_v1"
+        JEC_tag = "Winter25Prompt25_RunG_V3_DATA"
+        JER_tag = 'Summer23BPixPrompt23_RunD_JRV1_MC'
+        JetVeto_tag = "Winter25Prompt25_RunCDEFG"
 else:
     if YEAR=="2022":
         process.GlobalTag.globaltag = "130X_mcRun3_2022_realistic_v5"
@@ -136,8 +157,8 @@ else:
     elif YEAR=="2024":
         #process.GlobalTag.globaltag = "140X_mcRun3_2024_realistic_v26" #for MINIAODv4
         process.GlobalTag.globaltag = "150X_mcRun3_2024_realistic_v2" #for MINIAODv6
-        JEC_tag = "Summer24Prompt24_V1_MC"
-        JER_tag = 'Summer23BPixPrompt23_RunD_JRV1_MC' # on 2023BPiX MC
+        JEC_tag = "Summer24Prompt24_V2_MC"
+        JER_tag = 'Summer23BPixPrompt23_RunD_JRV1_MC' # same as  2023BPiX MC, need to change once new Tag is available
         JetVeto_tag = "Summer24Prompt24_RunBCDEFGHI"
     else:
         process.GlobalTag.globaltag = "130X_mcRun3_2022_realistic_v5"
@@ -155,7 +176,7 @@ print("JEC tag:",JEC_tag)
 print("JER tag:",JER_tag)
 print("JetVeto tag:",JetVeto_tag)
 print("globaltag",process.GlobalTag.globaltag)
-
+print("Generator ID:",GENERATOR_ID)
 ##-------------------- Import the JEC services -----------------------
 #process.load('JetMETCorrections.Configuration.DefaultJEC_cff')
 
@@ -167,18 +188,22 @@ process.load("PhysicsTools.PatAlgos.patSequences_cff")
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 inFiles = cms.untracked.vstring(
-#'root://cms-xrd-global.cern.ch//store/mc/Run3Summer22MiniAODv4/ZZ_TuneCP5_13p6TeV_pythia8/MINIAODSIM/130X_mcRun3_2022_realistic_v5-v2/2530000/e319e433-9397-4985-aa9e-a30d46e29f24.root'
 #'root://cms-xrd-global.cern.ch//store/mc/Run3Summer23BPixMiniAODv4/TTto2L2Nu_HT-500_NJet-7_TuneCP5_13p6TeV_powheg-pythia8/MINIAODSIM/130X_mcRun3_2023_realistic_postBPix_v2-v3/2820000/0115e762-15b7-40e7-949b-4b60b2770b76.root'
 ##'root://cms-xrd-global.cern.ch//store/mc/Run3Summer22MiniAODv4/QCD-4Jets_HT-1500to2000_TuneCP5_13p6TeV_madgraphMLM-pythia8/MINIAODSIM/130X_mcRun3_2022_realistic_v5-v2/2520000/00274cff-39eb-442e-bc3d-ae099a760f39.root'
+##'root://cms-xrd-global.cern.ch//store/mc/Run3Summer22EEMiniAODv4/GluGlutoHHto4B_kl-1p00_kt-1p00_c2-0p00_TuneCP5_13p6TeV_powheg-pythia8/MINIAODSIM/130X_mcRun3_2022_realistic_postEE_v6-v1/2540000/2a4009ad-866a-46af-b25c-82621c8c77f7.root' #2022EE MC
+##'root://cms-xrd-global.cern.ch//store/data/Run2022F/JetMET/MINIAOD/22Sep2023-v2/2550000/0006ceef-7579-459e-b618-9e58213246bf.root' #2022EE Data
 #'root://cms-xrd-global.cern.ch//store/data/Run2024C/JetMET0/MINIAOD/2024CDEReprocessing-v1/110000/00026b99-74fa-4588-9ce5-19e191445b79.root'
-#'root://cms-xrd-global.cern.ch//store/data/Run2024C/ParkingHH/MINIAOD/2024CDEReprocessing-v1/120000/0055c2bb-1477-4613-8db9-7db213d4dc49.root' #2024C data
 #'root://cms-xrd-global.cern.ch//store/data/Run2023D/ParkingHH/MINIAOD/22Sep2023_v1-v1/2550000/043fc4f6-f62b-4f50-9552-adcc8f4c6249.root' #2023BPiX data D
 #'root://cms-xrd-global.cern.ch//store/data/Run2024C/ParkingHH/MINIAOD/PromptReco-v1/000/379/415/00000/82133788-2b49-4611-bd34-f1346d26f139.root'
+'root://cms-xrd-global.cern.ch//store/data/Run2026A/ParkingHH1/MINIAOD/PromptReco-v1/000/401/623/00000/f61d7d30-92e9-4c80-80b0-58be78787b6d.root' #2026 data
 #'root://cms-xrd-global.cern.ch//store/mc/Run3Summer23BPixMiniAODv4/QCD-4Jets_HT-600to800_TuneCP5_13p6TeV_madgraphMLM-pythia8/MINIAODSIM/130X_mcRun3_2023_realistic_postBPix_v2-v3/2560000/0032f691-c554-4972-a562-144894da833c.root' #2023 BPiX MC
 #'root://cms-xrd-global.cern.ch//store/mc/Run3Summer22MiniAODv4/GluGlutoHHto4B_kl-1p00_kt-1p00_c2-0p00_LHEweights_TuneCP5_13p6TeV_powheg-pythia8/MINIAODSIM/130X_mcRun3_2022_realistic_v5-v2/2820000/0035a2fa-73be-4c9a-b9f4-21b482b1a58a.root'
-#'root://xrootd-cms.infn.it//store/mc/RunIISummer20UL18MiniAODv2/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/MINIAODSIM/106X_upgrade2018_realistic_v16_L1v1-v1/00000/04A0B676-D63A-6D41-B47F-F4CF8CBE7DB8.root'
 #'root://cms-xrd-global.cern.ch//store/data/Run2024C/ParkingHH/MINIAOD/2024CDEReprocessing-v1/120000/0055c2bb-1477-4613-8db9-7db213d4dc49.root' #2024 DATA MINIAODv4
-'root://cms-xrd-global.cern.ch//store/data/Run2024C/ParkingHH/MINIAOD/MINIv6NANOv15-v1/2520000/000e1128-d74b-4b9a-bc06-f80208fcbe8a.root' #2024 DATA MINIAODv6
+#'root://cms-xrd-global.cern.ch//store/data/Run2024C/ParkingHH/MINIAOD/MINIv6NANOv15-v1/2520000/000e1128-d74b-4b9a-bc06-f80208fcbe8a.root' #2024 DATA MINIAODv6
+#'root://cms-xrd-global.cern.ch//store/mc/Run3Summer23BPixMiniAODv4/QCD-4Jets_HT-200to400_TuneCP5_13p6TeV_madgraphMLM-pythia8/MINIAODSIM/130X_mcRun3_2023_realistic_postBPix_v2-v3/2560000/001a81aa-36c2-410f-9818-eb380d333344.root' #2023BPiXbkg Madgraph
+##'root://cms-xrd-global.cern.ch//store/mc/Run3Summer23BPixMiniAODv4/NMSSM_XtoYHto4B_MX-2000_MY-1000_TuneCP5_13p6TeV_madgraph-pythia8/MINIAODSIM/130X_mcRun3_2023_realistic_postBPix_v6-v3/140000/6c68c70e-ef00-486d-be5d-1fd5341f1f7d.root' #2023BPiX Signal
+##'root://cms-xrd-global.cern.ch//store/mc/RunIII2024Summer24MiniAODv6/GluGluH-Hto2B_Par-M-125_TuneCP5_13p6TeV_powhegMINLO-pythia8/MINIAODSIM/150X_mcRun3_2024_realistic_v2_ext1-v2/100000/02d804ea-ab8a-4af6-a033-0c74f53fae36.root' #2024 MC
+##'root://cms-xrd-global.cern.ch///store/data/Run2025C/ParkingHH1/MINIAOD/PromptReco-v2/000/393/111/00000/0195defe-3eb0-42a7-acbc-ee440bcb3ff6.root' #2025 Data
 )
 
 process.maxEvents = cms.untracked.PSet(input = cms.untracked.int32(30))
@@ -238,7 +263,7 @@ if ReadJEC:
 
     jecDBRecord = (JEC_tag)+"_AK4PFPuppi"
 
-    if YEAR=="2024":
+    if YEAR=="2027":
 
         process.jec = cms.ESSource('PoolDBESSource',
                 CondDBSetup,
@@ -767,12 +792,19 @@ setupEgammaPostRecoSeq(process,
 
 # Analyzer #
 
+metFilterTag = cms.InputTag("TriggerResults::PAT")
+if IsDATA:
+    if YEAR=="2024" or YEAR=="2025":
+        metFilterTag = cms.InputTag("TriggerResults","","RECO")
+print("metFilterTag",metFilterTag)
+
 process.mcjets =  cms.EDAnalyzer('Leptop',
     #basic things (year, data/MC, Run2 or Run3)
     Data =  cms.untracked.bool(IsDATA),
 	MonteCarlo =  cms.untracked.bool(not IsDATA),
 	FastSIM =  cms.untracked.bool(False),
     YEAR = cms.untracked.string(YEAR),
+    Generator_Tag = cms.untracked.int32(GENERATOR_ID),
     UltraLegacy =  cms.untracked.bool(False), 
     isRun3 =  cms.untracked.bool(IsRun3),
     #output filename
@@ -921,7 +953,8 @@ process.mcjets =  cms.EDAnalyzer('Leptop',
     L1_GtHandle = cms.InputTag("gtStage2Digis"),
     #MET Filter
     #MET_Filters = cms.InputTag("TriggerResults::PAT"),
-    MET_Filters = cms.InputTag("TriggerResults","","RECO"),  # for 2024 data
+    #MET_Filters = cms.InputTag("TriggerResults","","RECO"),  # for 2024 data
+    MET_Filters = metFilterTag,
     #GEN info
 	Generator = cms.InputTag("generator"),
     LHEEventProductInputTag = cms.InputTag('externalLHEProducer'),
@@ -958,7 +991,8 @@ process.mcjets =  cms.EDAnalyzer('Leptop',
     store_taus = cms.untracked.bool(False),
     store_CHS_met = cms.untracked.bool(False),
     store_PUPPI_met = cms.untracked.bool(True),
-    store_jet_id_variables = cms.untracked.bool(False),
+    store_jet_id_variables = cms.untracked.bool(True),
+    store_fatjet_id_variables = cms.untracked.bool(True),
     store_muon_id_variables = cms.untracked.bool(False),
     store_additional_muon_id_variables = cms.untracked.bool(False),
     store_electron_id_variables = cms.untracked.bool(False),
@@ -966,6 +1000,8 @@ process.mcjets =  cms.EDAnalyzer('Leptop',
     store_electron_scalnsmear =  cms.untracked.bool(False),
     store_photon_id_variables = cms.untracked.bool(False),
     store_tau_id_variables = cms.untracked.bool(False),
+    read_trigger_menu = cms.untracked.bool(False),
+    verbose = cms.untracked.bool(False),
 )
 
 #===== MET Filters ==
