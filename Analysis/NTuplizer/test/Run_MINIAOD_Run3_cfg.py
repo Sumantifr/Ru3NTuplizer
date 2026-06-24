@@ -794,7 +794,7 @@ setupEgammaPostRecoSeq(process,
 
 metFilterTag = cms.InputTag("TriggerResults::PAT")
 if IsDATA:
-    if YEAR=="2024" or YEAR=="2025":
+    if YEAR=="2024" or YEAR=="2025" or YEAR=="2025":
         metFilterTag = cms.InputTag("TriggerResults","","RECO")
 print("metFilterTag",metFilterTag)
 
