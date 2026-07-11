@@ -940,6 +940,9 @@ private:
   static const int ngenjetAK8mx =10;
   static const int nlhemax = 10;
   
+  float trigobj_pt_cut = 20.;
+  float trigobj_eta_cut = 3.;
+  
   // variables in ntuple //
   
   unsigned ievt;
@@ -1278,7 +1281,7 @@ private:
   
   // Check trigger & prescale info online in: https://cmshltinfo.app.cern.ch/summary
   
-  static const int nHLTmx = 76;
+  static const int nHLTmx = 79;
   const char *hlt_name[nHLTmx] = {
 	// single-muon triggers
 		"HLT_IsoMu24", "HLT_IsoTkMu24", "HLT_IsoMu27",                //3
@@ -1325,7 +1328,9 @@ private:
 	// montoring 4j triggers 
 		"HLT_PFHT280_QuadPFJet30",
 		"HLT_PFHT250_QuadPFJet25",
-		//2
+		"HLT_PFHT280",
+		"HLT_PFHT250",
+		//4
 	// photon trigger
 		"HLT_Photon175","HLT_Photon200",  //2
 	// MET trigger
@@ -1339,8 +1344,10 @@ private:
 		"HLT_VBF_DiPFJet75_45_Mjj800_DiPFJet60", //exclusive
 		//==2023
 		"HLT_VBF_DiPFJet105_40_Mjj1000_Detajj3p5",
-		"HLT_VBF_DiPFJet105_40_Mjj1000_Detajj3p5_TriplePFJet"
-		//7
+		"HLT_VBF_DiPFJet105_40_Mjj1000_Detajj3p5_TriplePFJet",
+		//Run-2 analogous
+		"HLT_PFHT330PT30_QuadPFJet_75_60_45_40_TriplePFBTagDeepJet_4p5"
+		//8
   }; 
   
   // HLT trigger booleans //
@@ -1418,6 +1425,8 @@ private:
   bool hlt_PFHT250_QuadPFJet30_PNet2BTagMean0p55; 
   bool hlt_PFHT250_QuadPFJet25;
   bool hlt_PFHT280_QuadPFJet30;
+  bool hlt_PFHT250;
+  bool hlt_PFHT280;
   bool hlt_Photon175;
   bool hlt_Photon200;
   
@@ -1434,25 +1443,31 @@ private:
   bool hlt_VBF_DiPFJet75_45_Mjj800_DiPFJet60;
   bool hlt_VBF_DiPFJet105_40_Mjj1000_Detajj3p5;
   bool hlt_VBF_DiPFJet105_40_Mjj1000_Detajj3p5_TriplePFJet;
+  bool hlt_PFHT330PT30_QuadPFJet_75_60_45_40_TriplePFBTagDeepJet_4p5;
   
   // Summary of trigger results //
   vector<bool> trig_bits;
   vector<string> trig_paths;
   
   // L1 trigger index //
-  int idx_L1_HTT280er, idx_L1_HTT320er, idx_L1_HTT360er, idx_L1_HTT400er, idx_L1_HTT450er, idx_L1_QuadJet60er2p5;
+  int idx_L1_HTT200er, idx_L1_HTT255er, idx_L1_HTT280er, idx_L1_HTT320er, idx_L1_HTT360er, idx_L1_HTT400er, idx_L1_HTT450er, idx_L1_QuadJet60er2p5;
+  int idx_L1_HTT200_SingleLLPJet60, idx_L1_HTT240_SingleLLPJet70; 
   int idx_L1_HTT280er_QuadJet_70_55_40_35_er2p5, idx_L1_HTT320er_QuadJet_80_60_er2p1_45_40_er2p3;
   int idx_L1_HTT320er_QuadJet_70_55_40_40_er2p5, idx_L1_HTT320er_QuadJet_80_60_er2p1_50_45_er2p3, idx_L1_Mu6_HTT240er, idx_L1_SingleJet60;
   int idx_L1_DoubleJet_65_35_DoubleJet35_Mass_Min600_DoubleJetCentral50, idx_L1_DoubleJet_65_35_DoubleJet35_Mass_Min650_DoubleJetCentral50, idx_L1_DoubleJet_110_35_DoubleJet35_Mass_Min800, idx_L1_DoubleJet40er2p5, idx_L1_DoubleJet100er2p3_dEta_Max1p6;
   int idx_L1_TripleJet_100_80_70_DoubleJet_80_70_er2p5, idx_L1_TripleJet_105_85_75_DoubleJet_85_75_er2p5, idx_L1_TripleJet_95_75_65_DoubleJet_75_65_er2p5;
 
  // L1 trigger booleans //
+  bool L1_HTT200er;
+  bool L1_HTT255er;
   bool L1_HTT280er;
   bool L1_HTT320er;
   bool L1_HTT360er;
   bool L1_HTT400er;
   bool L1_HTT450er;
   bool L1_QuadJet60er2p5;
+  bool L1_HTT200_SingleLLPJet60;
+  bool L1_HTT240_SingleLLPJet70;
   bool L1_HTT280er_QuadJet_70_55_40_35_er2p5;
   bool L1_HTT320er_QuadJet_70_55_40_40_er2p5;
   bool L1_HTT320er_QuadJet_80_60_er2p1_45_40_er2p3;
@@ -2013,6 +2028,8 @@ Leptop::Leptop(const edm::ParameterSet& pset):
   // 4jet monitoring triggers //
   T1->Branch("hlt_PFHT280_QuadPFJet30",&hlt_PFHT280_QuadPFJet30,"hlt_PFHT280_QuadPFJet30/O");
   T1->Branch("hlt_PFHT250_QuadPFJet25",&hlt_PFHT250_QuadPFJet25,"hlt_PFHT250_QuadPFJet25/O");
+  T1->Branch("hlt_PFHT280",&hlt_PFHT280,"hlt_PFHT280/O");
+  T1->Branch("hlt_PFHT250",&hlt_PFHT250,"hlt_PFHT250/O");
   // Photon triggers //
   T1->Branch("hlt_Photon175",&hlt_Photon175,"hlt_Photon175/O");
   T1->Branch("hlt_Photon200",&hlt_Photon200,"hlt_Photon200/O");
@@ -2029,6 +2046,7 @@ Leptop::Leptop(const edm::ParameterSet& pset):
   T1->Branch("hlt_VBF_DiPFJet75_45_Mjj800_DiPFJet60",&hlt_VBF_DiPFJet75_45_Mjj800_DiPFJet60,"hlt_VBF_DiPFJet75_45_Mjj800_DiPFJet60/O"); 
   T1->Branch("hlt_VBF_DiPFJet105_40_Mjj1000_Detajj3p5",&hlt_VBF_DiPFJet105_40_Mjj1000_Detajj3p5,"hlt_VBF_DiPFJet105_40_Mjj1000_Detajj3p5/O"); 
   T1->Branch("hlt_VBF_DiPFJet105_40_Mjj1000_Detajj3p5_TriplePFJet",&hlt_VBF_DiPFJet105_40_Mjj1000_Detajj3p5_TriplePFJet,"hlt_VBF_DiPFJet105_40_Mjj1000_Detajj3p5_TriplePFJet/O"); 
+  T1->Branch("hlt_PFHT330PT30_QuadPFJet_75_60_45_40_TriplePFBTagDeepJet_4p5",&hlt_PFHT330PT30_QuadPFJet_75_60_45_40_TriplePFBTagDeepJet_4p5,"hlt_PFHT330PT30_QuadPFJet_75_60_45_40_TriplePFBTagDeepJet_4p5/O"); 
   
   // Trigger object info //
   
@@ -2048,13 +2066,16 @@ Leptop::Leptop(const edm::ParameterSet& pset):
   T1->Branch("TrigObj_typeMask","std::vector<UShort_t>",&TrigObj_typeMask);
   
   // L1 trigger decision info //
-  
+  T1->Branch("L1_HTT200er",&L1_HTT200er,"L1_HTT200er/O");
+  T1->Branch("L1_HTT255er",&L1_HTT255er,"L1_HTT255er/O");
   T1->Branch("L1_HTT280er",&L1_HTT280er,"L1_HTT280er/O");
   T1->Branch("L1_HTT320er",&L1_HTT320er,"L1_HTT320er/O");
   T1->Branch("L1_HTT360er",&L1_HTT360er,"L1_HTT360er/O");
   T1->Branch("L1_HTT400er",&L1_HTT400er,"L1_HTT400er/O");
   T1->Branch("L1_HTT450er",&L1_HTT450er,"L1_HTT450er/O");
   T1->Branch("L1_QuadJet60er2p5",&L1_QuadJet60er2p5,"L1_QuadJet60er2p5/O");
+  T1->Branch("L1_HTT200_SingleLLPJet60",&L1_HTT200_SingleLLPJet60,"L1_HTT200_SingleLLPJet60/O");
+  T1->Branch("L1_HTT240_SingleLLPJet70",&L1_HTT240_SingleLLPJet70,"L1_HTT240_SingleLLPJet70/O");
   T1->Branch("L1_HTT280er_QuadJet_70_55_40_35_er2p5",&L1_HTT280er_QuadJet_70_55_40_35_er2p5,"L1_HTT280er_QuadJet_70_55_40_35_er2p5/O");
   T1->Branch("L1_HTT320er_QuadJet_70_55_40_40_er2p5",&L1_HTT320er_QuadJet_70_55_40_40_er2p5,"L1_HTT320er_QuadJet_70_55_40_40_er2p5/O");
   T1->Branch("L1_HTT320er_QuadJet_80_60_er2p1_45_40_er2p3",&L1_HTT320er_QuadJet_80_60_er2p1_45_40_er2p3,"L1_HTT320er_QuadJet_80_60_er2p1_45_40_er2p3/O");
@@ -2852,8 +2873,65 @@ Leptop::Leptop(const edm::ParameterSet& pset):
 Leptop::~Leptop()
 {
  
-  // do anything here that needs to be done at desctruction time
-   // (e.g. close files, deallocate resources etc.)
+  // Things that need to be done at desctruction time
+  // (e.g. close files, deallocate resources etc.)
+
+	// JEC uncs
+
+	for (JetCorrectionUncertainty* uncertainty : vsrc) {
+        delete uncertainty;
+    }
+    vsrc.clear();
+
+    for (JetCorrectionUncertainty* uncertainty : vsrcAK8) {
+        delete uncertainty;
+    }
+    vsrcAK8.clear();
+    
+   // Factorized jet correctors
+    delete jecL1FastAK4;
+    delete jecL2RelativeAK4;
+    delete jecL3AbsoluteAK4;
+    delete jecL2L3ResidualAK4;
+
+    delete jecL1FastAK8;
+    delete jecL2RelativeAK8;
+    delete jecL3AbsoluteAK8;
+    delete jecL2L3ResidualAK8;
+
+    // JetCorrectorParameters
+    delete L1FastAK4;
+    delete L2RelativeAK4;
+    delete L3AbsoluteAK4;
+    delete L2L3ResidualAK4;
+
+    delete L1FastAK8;
+    delete L2RelativeAK8;
+    delete L3AbsoluteAK8;
+    delete L2L3ResidualAK8;
+
+    //JetVetoMap
+    h_jetvetomap = nullptr;
+    h_jetvetomap_eep = nullptr;
+    if (file_jetvetomap != nullptr) {
+        file_jetvetomap->Close();
+        delete file_jetvetomap;
+        file_jetvetomap = nullptr;
+    }
+    
+    //Output tree & file
+    
+    T1 = nullptr;
+    T2 = nullptr;
+    
+    if (theFile != nullptr) {
+       if (theFile->IsOpen()) {
+           theFile->Close();
+       }
+
+       delete theFile;
+       theFile = nullptr;
+    }
 
 }
 
@@ -3146,7 +3224,7 @@ Leptop::analyze(const edm::Event& iEvent, const edm::EventSetup& pset) {
 				fjInputs.push_back(psjet); 
         
 				// Storing 4-momenta of jet constituents//
-				if(store_fatjet_constituents && nGenJetAK8<njetconsmax){
+				if(store_fatjet_constituents && nGenJetAK8_cons<njetconsmax){
 					GenJetAK8_cons_pt[nGenJetAK8_cons] = daught[i2]->pt();
 					GenJetAK8_cons_eta[nGenJetAK8_cons] = daught[i2]->eta();
 					GenJetAK8_cons_phi[nGenJetAK8_cons] = daught[i2]->phi();
@@ -3427,6 +3505,8 @@ Leptop::analyze(const edm::Event& iEvent, const edm::EventSetup& pset) {
     
 	edm::Handle<edm::TriggerResults> trigRes;
 	iEvent.getByToken(triggerBits_, trigRes);
+	
+	nTrigObj = 0;
 
 	if(trigRes.isValid()){
 
@@ -3607,11 +3687,11 @@ Leptop::analyze(const edm::Event& iEvent, const edm::EventSetup& pset) {
 	}
 	    
 	int xht=0;
-	nTrigObj = alltrgobj.size();
-	if(nTrigObj>njetmx) { nTrigObj = njetmx; }
-	if(nTrigObj > 0){
-		for(unsigned int iht=0; iht<(unsigned int)nTrigObj; iht++){
-			if(alltrgobj[iht].trg4v.Pt()>20 && fabs(alltrgobj[iht].trg4v.Eta())<3.0) {
+	//nTrigObj = alltrgobj.size();
+	//if(nTrigObj>njetmx) { nTrigObj = njetmx; }
+	if(alltrgobj.size() > 0){
+		for(unsigned int iht=0; iht<(unsigned int)alltrgobj.size(); iht++){
+			if(alltrgobj[iht].trg4v.Pt()>trigobj_pt_cut && fabs(alltrgobj[iht].trg4v.Eta())<trigobj_eta_cut) {
 				TrigObj_pt[xht] = alltrgobj[iht].trg4v.Pt();
 				TrigObj_eta[xht] = alltrgobj[iht].trg4v.Eta();
 				TrigObj_phi[xht] = alltrgobj[iht].trg4v.Phi();
@@ -3631,6 +3711,8 @@ Leptop::analyze(const edm::Event& iEvent, const edm::EventSetup& pset) {
 		//if(iht == (njetmx-1)) break;
 		}
 	}
+	
+	nTrigObj = xht;
 
 	}//trigRes.isValid()
     
@@ -3712,22 +3794,25 @@ Leptop::analyze(const edm::Event& iEvent, const edm::EventSetup& pset) {
       else if(jk==60) {  hlt_PFHT250_QuadPFJet30_PNet2BTagMean0p55 = booltrg[jk]; }
       else if(jk==61) {  hlt_PFHT280_QuadPFJet30 = booltrg[jk]; }
       else if(jk==62) {  hlt_PFHT250_QuadPFJet25 = booltrg[jk]; }
+      else if(jk==63) {  hlt_PFHT280 = booltrg[jk]; }
+      else if(jk==64) {  hlt_PFHT250 = booltrg[jk]; }
       // Photon triggers
-      else if(jk==63) {  hlt_Photon175 = booltrg[jk]; }
-      else if(jk==64) {  hlt_Photon200 = booltrg[jk]; }
+      else if(jk==65) {  hlt_Photon175 = booltrg[jk]; }
+      else if(jk==66) {  hlt_Photon200 = booltrg[jk]; }
       // MET triggers
-      else if(jk==65) {  hlt_PFMETNoMu120_PFMHTNoMu120_IDTight_PFHT60 = booltrg[jk]; }
-      else if(jk==66) {  hlt_PFMETNoMu100_PFMHTNoMu100_IDTight_PFHT60 = booltrg[jk]; }
-      else if(jk==67) {  hlt_PFMETNoMu140_PFMHTNoMu140_IDTight = booltrg[jk]; }
-      else if(jk==68) {  hlt_PFMETTypeOne140_PFMHT140_IDTight = booltrg[jk]; }
+      else if(jk==67) {  hlt_PFMETNoMu120_PFMHTNoMu120_IDTight_PFHT60 = booltrg[jk]; }
+      else if(jk==68) {  hlt_PFMETNoMu100_PFMHTNoMu100_IDTight_PFHT60 = booltrg[jk]; }
+      else if(jk==69) {  hlt_PFMETNoMu140_PFMHTNoMu140_IDTight = booltrg[jk]; }
+      else if(jk==70) {  hlt_PFMETTypeOne140_PFMHT140_IDTight = booltrg[jk]; }
       // VBF triggers 
-      else if(jk==69) {  hlt_QuadPFJet103_88_75_15 = booltrg[jk]; }
-      else if(jk==70) {  hlt_QuadPFJet103_88_75_15_PNetBTag_0p4_VBF2 = booltrg[jk]; }
-      else if(jk==71) {  hlt_QuadPFJet103_88_75_15_PNet2BTag_0p4_0p12_VBF1 = booltrg[jk]; }
-      else if(jk==72) {  hlt_VBF_DiPFJet125_45_Mjj1050 = booltrg[jk]; }
-      else if(jk==73) {  hlt_VBF_DiPFJet75_45_Mjj800_DiPFJet60 = booltrg[jk]; }
-      else if(jk==74) {  hlt_VBF_DiPFJet105_40_Mjj1000_Detajj3p5 = booltrg[jk]; }
-      else if(jk==75) {  hlt_VBF_DiPFJet105_40_Mjj1000_Detajj3p5_TriplePFJet = booltrg[jk]; }
+      else if(jk==71) {  hlt_QuadPFJet103_88_75_15 = booltrg[jk]; }
+      else if(jk==72) {  hlt_QuadPFJet103_88_75_15_PNetBTag_0p4_VBF2 = booltrg[jk]; }
+      else if(jk==73) {  hlt_QuadPFJet103_88_75_15_PNet2BTag_0p4_0p12_VBF1 = booltrg[jk]; }
+      else if(jk==74) {  hlt_VBF_DiPFJet125_45_Mjj1050 = booltrg[jk]; }
+      else if(jk==75) {  hlt_VBF_DiPFJet75_45_Mjj800_DiPFJet60 = booltrg[jk]; }
+      else if(jk==76) {  hlt_VBF_DiPFJet105_40_Mjj1000_Detajj3p5 = booltrg[jk]; }
+      else if(jk==77) {  hlt_VBF_DiPFJet105_40_Mjj1000_Detajj3p5_TriplePFJet = booltrg[jk]; }
+      else if(jk==78) {  hlt_PFHT330PT30_QuadPFJet_75_60_45_40_TriplePFBTagDeepJet_4p5 = booltrg[jk]; }
   }
 
   /*
@@ -3750,12 +3835,16 @@ Leptop::analyze(const edm::Event& iEvent, const edm::EventSetup& pset) {
   
   if(L1_GtHandle.isValid()){
   
+  L1_HTT200er = false;
+  L1_HTT255er = false;
   L1_HTT280er = false;
   L1_HTT320er = false;
   L1_HTT360er = false;
   L1_HTT400er = false;
   L1_HTT450er = false;
   L1_QuadJet60er2p5 = false;
+  L1_HTT200_SingleLLPJet60 = false;
+  L1_HTT240_SingleLLPJet70 = false;
   L1_HTT280er_QuadJet_70_55_40_35_er2p5 = false;
   L1_HTT320er_QuadJet_70_55_40_40_er2p5 = false;
   L1_HTT320er_QuadJet_80_60_er2p1_45_40_er2p3 = false;
@@ -3781,12 +3870,17 @@ Leptop::analyze(const edm::Event& iEvent, const edm::EventSetup& pset) {
 		
 		  if(Nevt==1 && read_trigger_menu) { cout<<keyval.second.getName()<<endl; }
 		
+		  if(keyval.second.getName() == "L1_HTT200er") 		 idx_L1_HTT200er = keyval.second.getIndex();
+		  if(keyval.second.getName() == "L1_HTT255er") 		 idx_L1_HTT255er = keyval.second.getIndex();
           if(keyval.second.getName() == "L1_HTT280er") 		 idx_L1_HTT280er = keyval.second.getIndex();
           if(keyval.second.getName() == "L1_QuadJet60er2p5") idx_L1_QuadJet60er2p5 = keyval.second.getIndex();
           if(keyval.second.getName() == "L1_HTT320er") 		 idx_L1_HTT320er = keyval.second.getIndex();
           if(keyval.second.getName() == "L1_HTT360er") 		 idx_L1_HTT360er = keyval.second.getIndex();
           if(keyval.second.getName() == "L1_HTT400er") 		 idx_L1_HTT400er = keyval.second.getIndex();
           if(keyval.second.getName() == "L1_HTT450er") 		 idx_L1_HTT450er = keyval.second.getIndex();
+          
+          if(keyval.second.getName() == "L1_HTT200_SingleLLPJet60") 		 idx_L1_HTT200_SingleLLPJet60 = keyval.second.getIndex();
+          if(keyval.second.getName() == "L1_HTT240_SingleLLPJet70") 		 idx_L1_HTT240_SingleLLPJet70 = keyval.second.getIndex();
           if(keyval.second.getName() == "L1_HTT280er_QuadJet_70_55_40_35_er2p5") 		idx_L1_HTT280er_QuadJet_70_55_40_35_er2p5 = keyval.second.getIndex();
           if(keyval.second.getName() == "L1_HTT320er_QuadJet_70_55_40_40_er2p5") 		idx_L1_HTT320er_QuadJet_70_55_40_40_er2p5 = keyval.second.getIndex();
           if(keyval.second.getName() == "L1_HTT320er_QuadJet_80_60_er2p1_45_40_er2p3") 	idx_L1_HTT320er_QuadJet_80_60_er2p1_45_40_er2p3 = keyval.second.getIndex();
@@ -3811,12 +3905,16 @@ Leptop::analyze(const edm::Event& iEvent, const edm::EventSetup& pset) {
          int ibx = 0;
          for(auto itr = L1_GtHandle->begin(ibx); itr != L1_GtHandle->end(ibx); ++itr){
 			 //4 jet specific bits //
+          if(itr->getAlgoDecisionFinal(idx_L1_HTT200er)){ L1_HTT200er = true;}
+          if(itr->getAlgoDecisionFinal(idx_L1_HTT255er)){ L1_HTT255er = true;}
           if(itr->getAlgoDecisionFinal(idx_L1_HTT280er)){ L1_HTT280er = true;}
           if(itr->getAlgoDecisionFinal(idx_L1_QuadJet60er2p5)){ L1_QuadJet60er2p5 = true;}
           if(itr->getAlgoDecisionFinal(idx_L1_HTT320er)){ L1_HTT320er = true;}
           if(itr->getAlgoDecisionFinal(idx_L1_HTT360er)){ L1_HTT360er = true;}
           if(itr->getAlgoDecisionFinal(idx_L1_HTT400er)){ L1_HTT400er = true;}
           if(itr->getAlgoDecisionFinal(idx_L1_HTT450er)){ L1_HTT450er = true;}
+          if(itr->getAlgoDecisionFinal(idx_L1_HTT200_SingleLLPJet60)){ L1_HTT200_SingleLLPJet60 = true;}
+          if(itr->getAlgoDecisionFinal(idx_L1_HTT240_SingleLLPJet70)){ L1_HTT240_SingleLLPJet70 = true;}
           if(itr->getAlgoDecisionFinal(idx_L1_HTT280er_QuadJet_70_55_40_35_er2p5)){ L1_HTT280er_QuadJet_70_55_40_35_er2p5 = true;}
           if(itr->getAlgoDecisionFinal(idx_L1_HTT320er_QuadJet_70_55_40_40_er2p5)){ L1_HTT320er_QuadJet_70_55_40_40_er2p5 = true;}
           if(itr->getAlgoDecisionFinal(idx_L1_HTT320er_QuadJet_80_60_er2p1_45_40_er2p3)){ L1_HTT320er_QuadJet_80_60_er2p1_45_40_er2p3 = true;}
@@ -5201,13 +5299,23 @@ Leptop::beginJob()
   jecL2L3ResidualAK8 = new FactorizedJetCorrector(vecL2L3ResidualAK8);
   
   for (int isrc = 0; isrc < nsrc; isrc++) {
+    
     const char *name = jecsrcnames[isrc];
-    JetCorrectorParameters *pAK4 = new JetCorrectorParameters(mJECUncFileAK4.c_str(), name) ;
-    JetCorrectionUncertainty *uncAK4 = new JetCorrectionUncertainty(*pAK4);
-    vsrc.push_back(uncAK4);
-    JetCorrectorParameters *pAK8 = new JetCorrectorParameters(mJECUncFileAK8.c_str(), name) ;
-    JetCorrectionUncertainty *uncAK8 = new JetCorrectionUncertainty(*pAK8);
-    vsrcAK8.push_back(uncAK8);
+    
+    //JetCorrectorParameters *pAK4 = new JetCorrectorParameters(mJECUncFileAK4.c_str(), name) ;
+    //JetCorrectionUncertainty *uncAK4 = new JetCorrectionUncertainty(*pAK4);
+    //vsrc.push_back(uncAK4);
+    
+    JetCorrectorParameters pAK4(mJECUncFileAK4.c_str(), name) ;
+    vsrc.push_back(new JetCorrectionUncertainty(pAK4));
+    
+    //JetCorrectorParameters *pAK8 = new JetCorrectorParameters(mJECUncFileAK8.c_str(), name) ;
+    //JetCorrectionUncertainty *uncAK8 = new JetCorrectionUncertainty(*pAK8);
+    //vsrcAK8.push_back(uncAK8);
+    
+    JetCorrectorParameters pAK8(mJECUncFileAK8.c_str(), name) ;
+    vsrcAK8.push_back(new JetCorrectionUncertainty(pAK8));
+    
   }
   
   resolution_AK4 = JME::JetResolution(mPtResoFileAK4.c_str());
@@ -5298,11 +5406,16 @@ Leptop::beginJob()
 void 
 Leptop::endJob() 
 {
-  theFile->cd();
-  theFile->Write();
-  theFile->Close();
+	
+	
+  if (theFile != nullptr && theFile->IsOpen()) {
   
-  //delete L1FastAK4;
+	theFile->cd();
+	theFile->Write();
+	theFile->Close();
+  
+  }
+  
 }
 
 // ------------ method called when starting to processes a run  ------------
@@ -5410,6 +5523,7 @@ Leptop::InitializeBranches(){
 	
 	TrigObj_HLTname.clear();
 	TrigObj_collection.clear();	
+	TrigObj_typeMask.clear();	
 }
 
 

@@ -1,0 +1,4 @@
+/ParkingHH0/Run2025C-PromptReco-v1/MINIAOD
+/ParkingHH0/Run2025C-PromptReco-v2/MINIAOD
+/ParkingHH1/Run2025C-PromptReco-v1/MINIAOD
+/ParkingHH1/Run2025C-PromptReco-v2/MINIAOD
